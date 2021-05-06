@@ -13,6 +13,8 @@ import Page3 from './screens/TestScreens/Page3'
 import Tab1 from './screens/TestScreens/Tab1'
 import Tab2 from './screens/TestScreens/Tab2'
 
+import Login from './screens/Login'
+
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 
@@ -38,6 +40,7 @@ const RootNavigator = () => {
             header: (props) => <CustomNavigationHeader {...props} />,
           })}
         />
+        <Stack.Screen name={Routes.Login} component={Login} options={{ headerShown: false }} />
         <Stack.Screen
           name={Routes.TabsNav}
           component={TabNavigator}

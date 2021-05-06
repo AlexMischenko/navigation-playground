@@ -6,4 +6,6 @@ export default {
   TabsNav: 'TabsNav',
   Tab1: 'Tab1',
   Tab2: 'Tab2',
+
+  Login: 'Login',
 }

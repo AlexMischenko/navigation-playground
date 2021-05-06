@@ -17,6 +17,10 @@ const Page1 = ({ navigation, route }) => {
     navigation.navigate(Routes.TabsNav, { screen: Routes.Tab2 })
   }
 
+  const handleLoginWorkflowNavigation = () => {
+    navigation.navigate(Routes.Login)
+  }
+
   const handleChangeTitle = () => {
     navigation.setOptions({ title: 'Remaned Title from inside Page1' })
   }
@@ -35,6 +39,9 @@ const Page1 = ({ navigation, route }) => {
       </Pressable>
       <Pressable style={cs.buttonBlock} onPress={handleTab2Navigation}>
         <Text style={cs.buttonText}>Go to Tab2</Text>
+      </Pressable>
+      <Pressable style={cs.buttonBlock} onPress={handleLoginWorkflowNavigation}>
+        <Text style={cs.buttonText}>Go to Login workflow</Text>
       </Pressable>
     </SafeAreaView>
   )
