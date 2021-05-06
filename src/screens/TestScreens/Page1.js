@@ -5,7 +5,6 @@ import Routes from '../../pages'
 
 const Page1 = ({ navigation, route }) => {
   const handleNavigation = () => {
-    console.log('🚀 ~ file: Page1.js ~ line 10 ~ handleNavigation ')
     navigation.navigate(Routes.Page2)
   }
 

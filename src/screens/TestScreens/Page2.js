@@ -5,7 +5,7 @@ import Routes from '../../pages'
 
 const Page2 = ({ navigation, route }) => {
   const handleNavigation = () => {
-    navigation.navigate(Routes.Page3)
+    navigation.navigate(Routes.Page3, { title: 'Title passed from Page2' })
   }
 
   return (
