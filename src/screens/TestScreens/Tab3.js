@@ -4,7 +4,7 @@ import { StyleSheet, SafeAreaView, Text, Pressable } from 'react-native'
 const Tab3 = ({ navigation, route }) => {
   return (
     <SafeAreaView style={cs.page}>
-      <Text style={[cs.titleBlock, cs.titleText]}>Tab 2</Text>
+      <Text style={[cs.titleBlock, cs.titleText]}>Tab 3</Text>
       <Pressable style={cs.buttonBlock} onPress={() => navigation.goBack()}>
         <Text style={cs.buttonText}>Go back in Tab navigator</Text>
       </Pressable>
