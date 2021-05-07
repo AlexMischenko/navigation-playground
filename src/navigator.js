@@ -5,6 +5,8 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import CustomNavigationHeader from './components/CustomNavigationHeader'
+import { NAVIGATION_STATE_KEY } from './utils/constants'
+import { setItem } from './utils/storage'
 
 import Routes from './routes'
 import Page1 from './screens/TestScreens/Page1'
@@ -59,9 +61,13 @@ const MainStack = () => {
   )
 }
 
-const RootNavigator = () => {
+const RootNavigator = ({ initialState }) => {
+  const handleNavigationStateChange = (state) => {
+    setItem(NAVIGATION_STATE_KEY, JSON.stringify(state))
+  }
+
   return (
-    <NavigationContainer>
+    <NavigationContainer initialState={initialState} onStateChange={handleNavigationStateChange}>
       <Stack.Navigator mode="modal" screenOptions={RootStackOptions}>
         <Stack.Screen name={Routes.MainStack} component={MainStack} />
         <Stack.Screen name={Routes.Modal1} component={Modal1} />
