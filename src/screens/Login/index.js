@@ -1,8 +1,7 @@
 import * as yup from 'yup'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useForm, Controller } from 'react-hook-form'
-import { ErrorMessage } from '@hookform/error-message'
+import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import {
   SafeAreaView,
@@ -17,7 +16,7 @@ import {
 import { setLoading } from '../../redux/reducers/uiSlice'
 import Routes from '../../routes'
 import theme from '../../theme'
-import StyledInput from '../../components/StyledInput'
+import StyledFormInput from '../../components/StyledFormInput'
 import cs from './styles'
 
 const Login = ({ navigation, route }) => {
@@ -72,42 +71,13 @@ const Login = ({ navigation, route }) => {
         style={cs.formBlock}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <Controller
+        <StyledFormInput
+          style={theme.helpers.mb16}
           name="username"
           control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <>
-              <StyledInput
-                style={theme.helpers.mb10}
-                title="Username"
-                onBlur={onBlur}
-                onChangeText={(value) => onChange(value)}
-                value={value}
-                errors={errors}
-                autoCapitalize="none"
-              />
-              <ErrorMessage errors={errors} name="username" as={<Text style={cs.errorText} />} />
-            </>
-          )}
+          errors={errors}
         />
-        <Controller
-          name="password"
-          control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <>
-              <StyledInput
-                style={theme.helpers.mb10}
-                title="Password"
-                onBlur={onBlur}
-                onChangeText={(value) => onChange(value)}
-                value={value}
-                errors={errors}
-                autoCapitalize="none"
-              />
-              <ErrorMessage errors={errors} name="password" as={<Text style={cs.errorText} />} />
-            </>
-          )}
-        />
+        <StyledFormInput name="password" control={control} errors={errors} />
         <Pressable style={cs.submitButton} onPress={handleSubmit(onSubmit)}>
           <Text style={cs.submitButtonText}>Log In</Text>
         </Pressable>

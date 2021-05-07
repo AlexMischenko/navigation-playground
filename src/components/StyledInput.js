@@ -46,6 +46,7 @@ const cs = StyleSheet.create({
   inputTitleText: {
     fontSize: adjustFont(14),
     color: 'black',
+    textTransform: 'capitalize',
   },
   inputBlock: {
     flexDirection: 'row',
