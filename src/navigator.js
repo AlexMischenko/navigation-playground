@@ -12,6 +12,7 @@ import Page2 from './screens/TestScreens/Page2'
 import Page3 from './screens/TestScreens/Page3'
 import Tab1 from './screens/TestScreens/Tab1'
 import Tab2 from './screens/TestScreens/Tab2'
+import Tab3 from './screens/TestScreens/Tab3'
 
 import Login from './screens/Login'
 import Signup from './screens/Signup'
@@ -26,6 +27,7 @@ const TabNavigator = () => {
     <Tab.Navigator>
       <Tab.Screen name={Routes.Tab1} component={Tab1} />
       <Tab.Screen name={Routes.Tab2} component={Tab2} />
+      <Tab.Screen name={Routes.Tab3} component={Tab3} />
     </Tab.Navigator>
   )
 }

@@ -1,17 +1,12 @@
 import React from 'react'
 import { StyleSheet, SafeAreaView, Text, Pressable } from 'react-native'
 
-import Routes from '../../pages'
-
-const Tab1 = ({ navigation, route }) => {
+const Tab3 = ({ navigation, route }) => {
   return (
     <SafeAreaView style={cs.page}>
-      <Text style={[cs.titleBlock, cs.titleText]}>Tab 1</Text>
-      <Pressable style={cs.buttonBlock} onPress={() => navigation.navigate(Routes.Tab2)}>
-        <Text style={cs.buttonText}>Go to Tab2</Text>
-      </Pressable>
+      <Text style={[cs.titleBlock, cs.titleText]}>Tab 2</Text>
       <Pressable style={cs.buttonBlock} onPress={() => navigation.goBack()}>
-        <Text style={cs.buttonText}>Go back from Tab navigator</Text>
+        <Text style={cs.buttonText}>Go back in Tab navigator</Text>
       </Pressable>
     </SafeAreaView>
   )
@@ -22,7 +17,7 @@ const cs = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'ivory',
+    backgroundColor: 'linen',
   },
   titleBlock: {
     marginBottom: 20,
@@ -43,4 +38,4 @@ const cs = StyleSheet.create({
   },
 })
 
-export default Tab1
+export default Tab3

@@ -6,6 +6,7 @@ export default {
   TabsNav: 'TabsNav',
   Tab1: 'Tab1',
   Tab2: 'Tab2',
+  Tab3: 'Tab3',
 
   Login: 'Login',
   Signup: 'Signup',
