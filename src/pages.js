@@ -8,4 +8,5 @@ export default {
   Tab2: 'Tab2',
 
   Login: 'Login',
+  Signup: 'Signup',
 }

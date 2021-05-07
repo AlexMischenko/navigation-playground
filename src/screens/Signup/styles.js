@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  loginPageContainer: {
+  signupPageContainer: {
     flex: 1,
     justifyContent: 'center',
     backgroundColor: 'white',
@@ -53,7 +53,7 @@ export default StyleSheet.create({
   footerText: {
     fontSize: 15,
   },
-  pressableText: {
+  signinText: {
     color: '#4A80F0',
     fontWeight: 'bold',
   },
