@@ -32,4 +32,37 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 14,
   },
+
+  // Modal screens
+  wrapper: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  overlayBlock: {
+    ...StyleSheet.absoluteFillObject,
+    flex: 1,
+    opacity: 0.2,
+  },
+  bgModal1: {
+    backgroundColor: '#0f2',
+  },
+  bgModal2: {
+    backgroundColor: '#f00',
+  },
+  bgModal3: {
+    backgroundColor: '#4518DB',
+  },
+  modalTitleText: {
+    color: 'white',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  modalButtonBlock: {
+    marginTop: 20,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+  },
 })
