@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native'
 
-import Routes from '../../pages'
+import Routes from '../../routes'
 import cs from './styles'
 
 const Signup = ({ navigation, route }) => {

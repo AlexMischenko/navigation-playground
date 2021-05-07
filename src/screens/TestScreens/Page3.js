@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaView, Text, Pressable } from 'react-native'
 
-import Routes from '../../pages'
+import Routes from '../../routes'
 import cs from './styles'
 
 const Page3 = ({ navigation, route }) => {

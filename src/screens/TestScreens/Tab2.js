@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, SafeAreaView, Text, Pressable } from 'react-native'
 
-import Routes from '../../pages'
+import Routes from '../../routes'
 
 const Tab2 = ({ navigation, route }) => {
   const handleNavigationToStack = () => {

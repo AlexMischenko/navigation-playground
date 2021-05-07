@@ -12,7 +12,7 @@ import {
 } from 'react-native'
 
 import { setLoading } from '../../redux/reducers/uiSlice'
-import Routes from '../../pages'
+import Routes from '../../routes'
 import cs from './styles'
 
 const Login = ({ navigation, route }) => {

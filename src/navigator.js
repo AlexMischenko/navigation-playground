@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import CustomNavigationHeader from './components/CustomNavigationHeader'
 
-import Routes from './pages'
+import Routes from './routes'
 import Page1 from './screens/TestScreens/Page1'
 import Page2 from './screens/TestScreens/Page2'
 import Page3 from './screens/TestScreens/Page3'

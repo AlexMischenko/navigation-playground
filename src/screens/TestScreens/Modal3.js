@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Pressable, StyleSheet } from 'react-native'
 
-import Routes from '../../pages'
+import Routes from '../../routes'
 
 const Modal3 = ({ navigation }) => {
   const handleLoginNavigation = () => {
