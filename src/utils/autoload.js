@@ -1,6 +1,7 @@
 import { Linking, Platform } from 'react-native'
 
 import { NAVIGATION_STATE_KEY, AUTH_TOKEN_KEY, API_URL_KEY, DEFAULT_ENV } from './constants'
+import { updateToken } from './request'
 import { getItem } from './storage'
 
 const loadEnv = () => {
@@ -39,6 +40,7 @@ const autoload = async () => {
 
   if (token) {
     // Restore Navigation state only for logged in users
+    updateToken(token)
     navigationState = await loadNavigationState()
   }
 

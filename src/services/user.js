@@ -8,7 +8,8 @@ import {
 } from '../redux/reducers/userSlice'
 import { setLoading } from '../redux/reducers/uiSlice'
 import { updateToken } from '../utils/request'
-import { clearAll } from '../utils/storage'
+import { setItem, clearAll } from '../utils/storage'
+import { AUTH_TOKEN_KEY } from '../utils/constants'
 import { log } from '../utils/debug'
 
 export const loginUser = ({ username, password }) => async (dispatch) => {
@@ -18,6 +19,7 @@ export const loginUser = ({ username, password }) => async (dispatch) => {
     const loginResponse = await loginUserApi({ username, password })
     dispatch(setLoading(false))
     dispatch(setUserToken(loginResponse.token))
+    await setItem(AUTH_TOKEN_KEY, loginResponse.token)
 
     if (loginResponse.user) {
       dispatch(setCurrentUser(loginResponse.user))
@@ -34,17 +36,19 @@ export const loginUser = ({ username, password }) => async (dispatch) => {
 
 export const refreshUser = () => (dispatch) => {
   dispatch(setLoading(true))
-  return getUser()
+  return getUser(false)
     .then((user) => {
       dispatch(setLoading(false))
       if (_.isEmpty(user)) {
         return false
       }
       dispatch(setCurrentUser(user))
+      return user
     })
     .catch((error) => {
       log('🚀 ~ file: user.js ~ line 23 ~ getUser ~ error', error)
       dispatch(setLoading(false))
+      return error
     })
 }
 
