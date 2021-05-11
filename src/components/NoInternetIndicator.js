@@ -18,12 +18,12 @@ const NoInternetIndicator = () => {
 
 const cs = StyleSheet.create({
   overlayContent: {
-    backgroundColor: theme.colors.dark2,
+    backgroundColor: theme.colors.disabledText,
     padding: adjustToWidth(40),
-    borderRadius: theme.borderRadius.xxl,
+    borderRadius: theme.borderRadius.lg,
   },
   overlayTitle: {
-    ...theme.textStyles.h1,
+    ...theme.textStyles.titleLarge,
     textAlign: 'center',
     lineHeight: adjustFont(46),
     color: theme.colors.white,

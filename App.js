@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <LoadingContainer navigateTo={null}>
+      <LoadingContainer>
         <RootNavigator initialState={initialNavigationState} />
       </LoadingContainer>
       <LoadingSpinner />
