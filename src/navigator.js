@@ -1,5 +1,7 @@
 import 'react-native-gesture-handler'
+import { isEmpty } from 'lodash'
 import * as React from 'react'
+import { useSelector } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -43,20 +45,30 @@ const TabNavigator = () => {
 }
 
 const MainStack = () => {
+  const currentUser = useSelector((store) => store.user.currentUser)
+  const isSignedIn = !isEmpty(currentUser)
+
   return (
     <Stack.Navigator>
-      <Stack.Screen name={Routes.Page1} component={Page1} />
-      <Stack.Screen name={Routes.Page2} component={Page2} />
-      <Stack.Screen
-        name={Routes.Page3}
-        component={Page3}
-        options={({ route }) => ({
-          header: (props) => <CustomNavigationHeader {...props} />,
-        })}
-      />
-      <Stack.Screen name={Routes.Login} component={Login} options={NoHeader} />
-      <Stack.Screen name={Routes.Signup} component={Signup} options={NoHeader} />
-      <Stack.Screen name={Routes.TabsNav} component={TabNavigator} options={NoHeader} />
+      {isSignedIn ? (
+        <>
+          <Stack.Screen name={Routes.Page1} component={Page1} />
+          <Stack.Screen name={Routes.Page2} component={Page2} />
+          <Stack.Screen
+            name={Routes.Page3}
+            component={Page3}
+            options={({ route }) => ({
+              header: (props) => <CustomNavigationHeader {...props} />,
+            })}
+          />
+          <Stack.Screen name={Routes.TabsNav} component={TabNavigator} options={NoHeader} />
+        </>
+      ) : (
+        <>
+          <Stack.Screen name={Routes.Login} component={Login} options={NoHeader} />
+          <Stack.Screen name={Routes.Signup} component={Signup} options={NoHeader} />
+        </>
+      )}
     </Stack.Navigator>
   )
 }

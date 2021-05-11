@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import store from './src/redux/store'
 import RootNavigator from './src/navigator'
 import SplashScreen from './src/screens/SplashScreen'
+import LoadingContainer from './src/LoadingContainer'
 import LoadingSpinner from './src/components/LoadingSpinner'
 import autoload from './src/utils/autoload'
 
@@ -29,8 +30,9 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <RootNavigator initialState={initialNavigationState} />
-      {/** TODO: Move `LoadingSpinner` and `NoInternet` to `LoadingContainer` */}
+      <LoadingContainer navigateTo={null}>
+        <RootNavigator initialState={initialNavigationState} />
+      </LoadingContainer>
       <LoadingSpinner />
     </Provider>
   )

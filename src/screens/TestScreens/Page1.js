@@ -1,16 +1,24 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { SafeAreaView, Text, Pressable } from 'react-native'
 
+import { logoutUser } from '../../services/user'
 import Routes from '../../routes'
 import cs from './styles'
 
 const Page1 = ({ navigation, route }) => {
+  const dispatch = useDispatch()
+
   const handleChangeTitle = () => {
     navigation.setOptions({ title: 'Remaned Title from inside Page1' })
   }
 
   const handleTab2Navigation = () => {
     navigation.navigate(Routes.TabsNav, { screen: Routes.Tab2, initial: false })
+  }
+
+  const handleLogout = () => {
+    logoutUser()(dispatch)
   }
 
   return (
@@ -34,8 +42,8 @@ const Page1 = ({ navigation, route }) => {
       <Pressable style={cs.buttonBlock} onPress={() => navigation.navigate(Routes.Modal2)}>
         <Text style={cs.buttonText}>Open Modal2</Text>
       </Pressable>
-      <Pressable style={cs.buttonBlock} onPress={() => navigation.navigate(Routes.Login)}>
-        <Text style={cs.buttonText}>Go to Login workflow</Text>
+      <Pressable style={cs.buttonBlock} onPress={handleLogout}>
+        <Text style={cs.buttonText}>Logout</Text>
       </Pressable>
     </SafeAreaView>
   )

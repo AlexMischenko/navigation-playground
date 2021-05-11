@@ -13,7 +13,7 @@ import {
   Alert,
 } from 'react-native'
 
-import { setLoading } from '../../redux/reducers/uiSlice'
+import { loginUser } from '../../services/user'
 import Routes from '../../routes'
 import theme from '../../theme'
 import StyledFormInput from '../../components/StyledFormInput'
@@ -55,13 +55,8 @@ const Login = ({ navigation, route }) => {
     Alert.alert('Forgot password', 'Not implemeted yet :)')
   }
 
-  const onSubmit = (data) => {
-    console.log('🚀 ~ file: index.js ~ line 34 ~ onSubmit ~ data', data)
-    dispatch(setLoading(true))
-    setTimeout(() => {
-      dispatch(setLoading(false))
-      Alert.alert('Fake Login request is complete')
-    }, 1200)
+  const onSubmit = async (data) => {
+    loginUser(data)(dispatch)
   }
 
   return (
