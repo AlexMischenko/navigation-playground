@@ -55,7 +55,7 @@ const cs = StyleSheet.create({
     height: adjustToWidth(64),
     paddingLeft: adjustToWidth(17),
     paddingRight: adjustToWidth(16.5),
-    borderRadius: adjustToWidth(16),
+    borderRadius: theme.borderRadius.lg,
     backgroundColor: theme.colors.white,
     shadowColor: theme.colors.grey,
     shadowOpacity: 0.15,

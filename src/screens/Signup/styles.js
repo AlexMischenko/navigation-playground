@@ -13,7 +13,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     height: adjustToWidth(60),
     marginTop: adjustToWidth(30),
-    borderRadius: adjustToWidth(10),
+    borderRadius: theme.borderRadius.lg,
     backgroundColor: theme.colors.green,
   },
   whiteColor: {
