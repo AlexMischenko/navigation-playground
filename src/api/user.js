@@ -14,6 +14,21 @@ export const loginUser = (data) => {
   })
 }
 
+export const signUpUser = (data) => {
+  // TODO: Should be replaced with real API call
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        user: {
+          id: 1,
+          username: data.username,
+          email: data.email,
+        },
+      })
+    }, 500)
+  })
+}
+
 export const logoutUser = () => {
   // TODO: Should be replaced with real API call
   return new Promise((resolve, reject) => {

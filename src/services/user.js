@@ -1,6 +1,11 @@
 import _ from 'lodash'
 
-import { loginUser as loginUserApi, logoutUser as logoutUserApi, getUser } from '../api/user'
+import {
+  loginUser as loginUserApi,
+  logoutUser as logoutUserApi,
+  signUpUser as signUpUserApi,
+  getUser,
+} from '../api/user'
 import {
   setCurrentUser,
   setUserToken,
@@ -11,6 +16,24 @@ import { updateToken } from '../utils/request'
 import { setItem, clearAll } from '../utils/storage'
 import { AUTH_TOKEN_KEY } from '../utils/constants'
 import { log } from '../utils/debug'
+
+export const refreshUser = () => (dispatch) => {
+  dispatch(setLoading(true))
+  return getUser(false)
+    .then((user) => {
+      dispatch(setLoading(false))
+      if (_.isEmpty(user)) {
+        return false
+      }
+      dispatch(setCurrentUser(user))
+      return user
+    })
+    .catch((error) => {
+      log('🚀 ~ file: user.js ~ line 23 ~ getUser ~ error', error)
+      dispatch(setLoading(false))
+      return error
+    })
+}
 
 export const loginUser = ({ username, password }) => async (dispatch) => {
   dispatch(setLoading(true))
@@ -35,24 +58,6 @@ export const loginUser = ({ username, password }) => async (dispatch) => {
   }
 }
 
-export const refreshUser = () => (dispatch) => {
-  dispatch(setLoading(true))
-  return getUser(false)
-    .then((user) => {
-      dispatch(setLoading(false))
-      if (_.isEmpty(user)) {
-        return false
-      }
-      dispatch(setCurrentUser(user))
-      return user
-    })
-    .catch((error) => {
-      log('🚀 ~ file: user.js ~ line 23 ~ getUser ~ error', error)
-      dispatch(setLoading(false))
-      return error
-    })
-}
-
 export const logoutUser = (withRequest = false) => async (dispatch) => {
   if (withRequest) {
     await logoutUserApi()
@@ -62,4 +67,12 @@ export const logoutUser = (withRequest = false) => async (dispatch) => {
   updateToken(null)
   dispatch(setSignout(true))
   dispatch(logoutUserAction())
+}
+
+export const signUpUser = ({ username, email, password }) => (dispatch) => {
+  return signUpUserApi({ username, email, password }).then((signUpResult) => {
+    return loginUser({ username, password })(dispatch).then(() => {
+      return signUpResult
+    })
+  })
 }

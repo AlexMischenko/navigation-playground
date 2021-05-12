@@ -1,8 +1,10 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ScrollView, View, Text, Pressable } from 'react-native'
 
+import { signUpUser } from '../../services/user'
 import Routes from '../../routes'
 import { signupValidationSchema } from '../../utils/validators'
 import theme from '../../theme'
@@ -11,6 +13,8 @@ import StyledFormInput from '../../components/StyledFormInput'
 import cs from './styles'
 
 const Signup = ({ navigation, route }) => {
+  const dispatch = useDispatch()
+
   const formDefaultValues = {
     username: '',
     email: '',
@@ -27,7 +31,7 @@ const Signup = ({ navigation, route }) => {
   })
 
   const onSubmit = async (data) => {
-    console.log('🚀 ~ file: Signup ~ line 30 ~ onSubmit ~ data', data)
+    signUpUser(data)(dispatch)
   }
 
   return (
@@ -62,7 +66,10 @@ const Signup = ({ navigation, route }) => {
         <View style={theme.helpers.alignItemsCenter}>
           <Pressable style={theme.helpers.pb20} onPress={() => navigation.navigate(Routes.Login)}>
             <Text style={theme.textStyles.subHeadline}>
-              Already have an account ? <Text style={cs.pressableTextColor}>Sign In.</Text>
+              Already have an account ?{' '}
+              <Text style={[theme.textStyles.subHeadlineBold, cs.pressableTextColor]}>
+                Sign In.
+              </Text>
             </Text>
           </Pressable>
         </View>
