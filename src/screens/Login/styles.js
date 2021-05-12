@@ -1,27 +1,25 @@
 import { StyleSheet } from 'react-native'
 
+import theme from '../../theme'
+import { adjustToWidth } from '../../utils/styleHelpers'
+
 export default StyleSheet.create({
-  loginPageContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'white',
-  },
   titleBlock: {
     alignSelf: 'center',
-    marginBottom: 20,
+    marginBottom: adjustToWidth(20),
   },
   titleText: {
     fontSize: 30,
     fontWeight: 'bold',
   },
   formBlock: {
-    paddingHorizontal: 30,
+    paddingHorizontal: adjustToWidth(30),
   },
   formInputBlock: {
-    marginTop: 20,
+    marginTop: adjustToWidth(20),
   },
   formInput: {
-    height: 60,
+    height: adjustToWidth(60),
     width: '100%',
     paddingHorizontal: 15,
     borderRadius: 15,
@@ -30,35 +28,20 @@ export default StyleSheet.create({
   submitButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
-    marginTop: 30,
-    borderRadius: 10,
-    backgroundColor: '#34C759',
-  },
-  submitButtonText: {
-    color: 'white',
-    fontSize: 14,
+    height: adjustToWidth(60),
+    marginTop: adjustToWidth(30),
+    borderRadius: adjustToWidth(10),
+    backgroundColor: theme.colors.green,
   },
 
   footerBlock: {
-    position: 'absolute',
-    bottom: 50, // TODO: Fix on iOS/Android
-    alignSelf: 'center',
+    height: adjustToWidth(100),
     alignItems: 'center',
-    marginTop: 20,
   },
-  footerButton: {
-    paddingBottom: 20,
+  whiteColor: {
+    color: theme.colors.white,
   },
-  footerText: {
-    fontSize: 15,
-  },
-  pressableText: {
-    color: '#4A80F0',
-    fontWeight: 'bold',
-  },
-  errorText: {
-    color: 'red',
-    fontSize: 12,
+  pressableTextColor: {
+    color: theme.colors.theme2,
   },
 })

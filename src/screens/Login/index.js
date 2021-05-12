@@ -1,10 +1,10 @@
-import * as yup from 'yup'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import {
   SafeAreaView,
+  ScrollView,
   View,
   Text,
   Pressable,
@@ -15,6 +15,7 @@ import {
 
 import { loginUser } from '../../services/user'
 import Routes from '../../routes'
+import { loginValidationSchema } from '../../utils/validators'
 import theme from '../../theme'
 import StyledFormInput from '../../components/StyledFormInput'
 import cs from './styles'
@@ -27,24 +28,13 @@ const Login = ({ navigation, route }) => {
     password: '',
   }
 
-  const fieldSchema = yup.object().shape({
-    username: yup
-      .string()
-      .required('Is required')
-      .matches(/^[a-z0-9_]+$/, 'Only lowercase letters, digits and underscores'),
-    password: yup
-      .string()
-      .required('Is required')
-      .matches(/^[a-zA-Z0-9_]+$/, 'Only letters, digits and underscores'),
-  })
-
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: formDefaultValues,
-    resolver: yupResolver(fieldSchema),
+    resolver: yupResolver(loginValidationSchema),
   })
 
   const onSignupPress = () => {
@@ -60,31 +50,39 @@ const Login = ({ navigation, route }) => {
   }
 
   return (
-    <SafeAreaView style={cs.loginPageContainer}>
-      <Text style={[cs.titleBlock, cs.titleText]}>Login</Text>
-      <KeyboardAvoidingView
-        style={cs.formBlock}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <SafeAreaView style={theme.helpers.page}>
+      <ScrollView
+        style={theme.helpers.flex1}
+        contentContainerStyle={theme.helpers.flex1}
+        bounces={false}
       >
-        <StyledFormInput
-          style={theme.helpers.mb16}
-          name="username"
-          control={control}
-          errors={errors}
-        />
-        <StyledFormInput name="password" control={control} errors={errors} />
-        <Pressable style={cs.submitButton} onPress={handleSubmit(onSubmit)}>
-          <Text style={cs.submitButtonText}>Log In</Text>
-        </Pressable>
-      </KeyboardAvoidingView>
-      <View style={cs.footerBlock}>
-        <Pressable style={cs.footerButton} onPress={onSignupPress}>
-          <Text style={[cs.footerText, cs.pressableText]}>Sign Up</Text>
-        </Pressable>
-        <Pressable style={cs.footerButton} onPress={onForgotPasswordPress}>
-          <Text style={cs.footerText}>Forgot password ?</Text>
-        </Pressable>
-      </View>
+        <View style={theme.helpers.flex1JustifyContentCenter}>
+          <Text style={[cs.titleBlock, theme.textStyles.title1]}>Login</Text>
+          <KeyboardAvoidingView
+            style={cs.formBlock}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          >
+            <StyledFormInput
+              style={theme.helpers.mb16}
+              name="username"
+              control={control}
+              errors={errors}
+            />
+            <StyledFormInput name="password" control={control} errors={errors} />
+            <Pressable style={cs.submitButton} onPress={handleSubmit(onSubmit)}>
+              <Text style={[theme.textStyles.title3, cs.whiteColor]}>Log In</Text>
+            </Pressable>
+          </KeyboardAvoidingView>
+        </View>
+        <View style={cs.footerBlock}>
+          <Pressable style={theme.helpers.pb20} onPress={onSignupPress}>
+            <Text style={[theme.textStyles.subHeadlineBold, cs.pressableTextColor]}>Sign Up</Text>
+          </Pressable>
+          <Pressable style={theme.helpers.pb20} onPress={onForgotPasswordPress}>
+            <Text style={theme.textStyles.subHeadline}>Forgot password ?</Text>
+          </Pressable>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   )
 }

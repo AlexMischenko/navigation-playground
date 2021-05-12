@@ -46,6 +46,9 @@ const margins = {
   mt16: {
     marginTop: adjustToWidth(16),
   },
+  mt20: {
+    marginTop: adjustToWidth(20),
+  },
 
   // marginBottom
   mb5: {
@@ -62,6 +65,9 @@ const margins = {
   },
   mb16: {
     marginBottom: adjustToWidth(16),
+  },
+  mb20: {
+    marginBottom: adjustToWidth(20),
   },
 
   // marginLeft
@@ -97,6 +103,9 @@ const margins = {
   mr16: {
     marginRight: adjustToWidth(16),
   },
+  mr20: {
+    marginRight: adjustToWidth(20),
+  },
 
   // marginVertical
   mv5: {
@@ -111,8 +120,25 @@ const margins = {
   mv16: {
     marginVertical: adjustToWidth(16),
   },
+  mv20: {
+    marginVertical: adjustToWidth(20),
+  },
+
+  // marginAll
+  ma5: {
+    margin: adjustToWidth(5),
+  },
+  ma10: {
+    margin: adjustToWidth(10),
+  },
+  ma15: {
+    margin: adjustToWidth(15),
+  },
   ma16: {
     margin: adjustToWidth(16),
+  },
+  ma20: {
+    margin: adjustToWidth(20),
   },
 
   // marginHorizontal
@@ -167,6 +193,9 @@ const paddings = {
   pt16: {
     paddingTop: adjustToWidth(16),
   },
+  pt20: {
+    paddingTop: adjustToWidth(20),
+  },
 
   // paddingBottom
   pb5: {
@@ -184,6 +213,9 @@ const paddings = {
   pb16: {
     paddingBottom: adjustToWidth(16),
   },
+  pb20: {
+    paddingBottom: adjustToWidth(20),
+  },
 
   // paddingLeft
   pl5: {
@@ -197,6 +229,9 @@ const paddings = {
   },
   pl16: {
     paddingLeft: adjustToWidth(16),
+  },
+  pl20: {
+    paddingLeft: adjustToWidth(20),
   },
   pl28: {
     paddingLeft: adjustToWidth(28),
@@ -218,6 +253,9 @@ const paddings = {
   pr16: {
     paddingRight: adjustToWidth(16),
   },
+  pr20: {
+    paddingRight: adjustToWidth(20),
+  },
 
   // paddingVertical
   pv5: {
@@ -232,8 +270,25 @@ const paddings = {
   pv16: {
     paddingVertical: adjustToWidth(16),
   },
+  pv20: {
+    paddingVertical: adjustToWidth(20),
+  },
+
+  // paddingAll
+  pa5: {
+    padding: adjustToWidth(5),
+  },
+  pa10: {
+    padding: adjustToWidth(10),
+  },
+  pa15: {
+    padding: adjustToWidth(15),
+  },
   pa16: {
     padding: adjustToWidth(16),
+  },
+  pa20: {
+    padding: adjustToWidth(20),
   },
 
   // paddingHorizontal
@@ -252,6 +307,9 @@ const paddings = {
   ph16: {
     paddingHorizontal: adjustToWidth(16),
   },
+  ph20: {
+    paddingHorizontal: adjustToWidth(20),
+  },
 }
 
 export const layoutHelpers = StyleSheet.create({
@@ -259,6 +317,10 @@ export const layoutHelpers = StyleSheet.create({
   ...paddings,
   flex1: {
     flex: 1,
+  },
+  flex1JustifyContentCenter: {
+    flex: 1,
+    justifyContent: 'center',
   },
   alignItemsCenter: {
     alignItems: 'center',
