@@ -19,7 +19,7 @@ export const percentToValue = (percent) => {
 
 // default fonts min = 10, due to UI tips from google
 export const scaleMin = (x1, min, scale) => (x1 * scale > min ? x1 * scale : min)
-// adjust fonts to some custom scale like Signup checkboxes
+// adjust fonts to some custom scale like SignUp checkboxes
 export const scaleFont = (x, scale) => scaleMin(x, 8, scale)
 // adjust fonts to screen width
 export const adjustFont = (x, defaultWidth = themeDeviceWidth) =>

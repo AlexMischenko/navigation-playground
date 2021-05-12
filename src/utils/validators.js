@@ -11,7 +11,7 @@ export const loginValidationSchema = yup.object().shape({
     .matches(/^[a-zA-Z0-9_]+$/, 'Only letters, digits and underscores'),
 })
 
-export const signupValidationSchema = yup.object().shape({
+export const signUpValidationSchema = yup.object().shape({
   username: yup
     .string()
     .required('Is required')

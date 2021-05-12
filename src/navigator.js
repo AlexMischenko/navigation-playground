@@ -22,7 +22,7 @@ import Modal2 from './screens/TestScreens/Modal2'
 import Modal3 from './screens/TestScreens/Modal3'
 
 import Login from './screens/Login'
-import Signup from './screens/Signup'
+import SignUp from './screens/SignUp'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -77,7 +77,7 @@ const MainStack = () => {
               animationTypeForReplace: isSignout ? 'pop' : 'push',
             }}
           />
-          <Stack.Screen name={Routes.Signup} component={Signup} options={NoHeader} />
+          <Stack.Screen name={Routes.SignUp} component={SignUp} options={NoHeader} />
         </>
       )}
     </Stack.Navigator>

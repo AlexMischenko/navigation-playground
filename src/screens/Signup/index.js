@@ -6,13 +6,13 @@ import { ScrollView, View, Text, Pressable } from 'react-native'
 
 import { signUpUser } from '../../services/user'
 import Routes from '../../routes'
-import { signupValidationSchema } from '../../utils/validators'
+import { signUpValidationSchema } from '../../utils/validators'
 import theme from '../../theme'
 import Layout from '../../components/Layout'
 import StyledFormInput from '../../components/StyledFormInput'
 import cs from './styles'
 
-const Signup = ({ navigation, route }) => {
+const SignUp = ({ navigation, route }) => {
   const dispatch = useDispatch()
 
   const formDefaultValues = {
@@ -27,7 +27,7 @@ const Signup = ({ navigation, route }) => {
     formState: { errors },
   } = useForm({
     defaultValues: formDefaultValues,
-    resolver: yupResolver(signupValidationSchema),
+    resolver: yupResolver(signUpValidationSchema),
   })
 
   const onSubmit = async (data) => {
@@ -78,4 +78,4 @@ const Signup = ({ navigation, route }) => {
   )
 }
 
-export default Signup
+export default SignUp

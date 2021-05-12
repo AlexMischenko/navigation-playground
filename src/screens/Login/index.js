@@ -30,7 +30,7 @@ const Login = ({ navigation, route }) => {
   })
 
   const onSignupPress = () => {
-    navigation.navigate(Routes.Signup)
+    navigation.navigate(Routes.SignUp)
   }
 
   const onForgotPasswordPress = () => {

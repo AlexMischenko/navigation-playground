@@ -15,5 +15,5 @@ export default {
   Modal3: 'Modal3',
 
   Login: 'Login',
-  Signup: 'Signup',
+  SignUp: 'SignUp',
 }
