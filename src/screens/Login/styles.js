@@ -8,16 +8,6 @@ export default StyleSheet.create({
     alignSelf: 'center',
     marginBottom: adjustToWidth(20),
   },
-  titleText: {
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-  formBlock: {
-    paddingHorizontal: adjustToWidth(30),
-  },
-  formInputBlock: {
-    marginTop: adjustToWidth(20),
-  },
   formInput: {
     height: adjustToWidth(60),
     width: '100%',
@@ -33,7 +23,6 @@ export default StyleSheet.create({
     borderRadius: adjustToWidth(10),
     backgroundColor: theme.colors.green,
   },
-
   footerBlock: {
     height: adjustToWidth(100),
     alignItems: 'center',

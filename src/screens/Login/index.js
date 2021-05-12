@@ -59,7 +59,7 @@ const Login = ({ navigation, route }) => {
         <View style={theme.helpers.flex1JustifyContentCenter}>
           <Text style={[cs.titleBlock, theme.textStyles.title1]}>Login</Text>
           <KeyboardAvoidingView
-            style={cs.formBlock}
+            style={theme.helpers.ph30}
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           >
             <StyledFormInput

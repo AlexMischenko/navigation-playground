@@ -124,23 +124,6 @@ const margins = {
     marginVertical: adjustToWidth(20),
   },
 
-  // marginAll
-  ma5: {
-    margin: adjustToWidth(5),
-  },
-  ma10: {
-    margin: adjustToWidth(10),
-  },
-  ma15: {
-    margin: adjustToWidth(15),
-  },
-  ma16: {
-    margin: adjustToWidth(16),
-  },
-  ma20: {
-    margin: adjustToWidth(20),
-  },
-
   // marginHorizontal
   mh4: {
     marginHorizontal: adjustToWidth(4),
@@ -156,6 +139,23 @@ const margins = {
   },
   mh16: {
     marginHorizontal: adjustToWidth(16),
+  },
+
+  // marginAll
+  ma5: {
+    margin: adjustToWidth(5),
+  },
+  ma10: {
+    margin: adjustToWidth(10),
+  },
+  ma15: {
+    margin: adjustToWidth(15),
+  },
+  ma16: {
+    margin: adjustToWidth(16),
+  },
+  ma20: {
+    margin: adjustToWidth(20),
   },
 
   // negative helpers
@@ -274,23 +274,6 @@ const paddings = {
     paddingVertical: adjustToWidth(20),
   },
 
-  // paddingAll
-  pa5: {
-    padding: adjustToWidth(5),
-  },
-  pa10: {
-    padding: adjustToWidth(10),
-  },
-  pa15: {
-    padding: adjustToWidth(15),
-  },
-  pa16: {
-    padding: adjustToWidth(16),
-  },
-  pa20: {
-    padding: adjustToWidth(20),
-  },
-
   // paddingHorizontal
   ph4: {
     paddingHorizontal: adjustToWidth(4),
@@ -309,6 +292,26 @@ const paddings = {
   },
   ph20: {
     paddingHorizontal: adjustToWidth(20),
+  },
+  ph30: {
+    paddingHorizontal: adjustToWidth(30),
+  },
+
+  // paddingAll
+  pa5: {
+    padding: adjustToWidth(5),
+  },
+  pa10: {
+    padding: adjustToWidth(10),
+  },
+  pa15: {
+    padding: adjustToWidth(15),
+  },
+  pa16: {
+    padding: adjustToWidth(16),
+  },
+  pa20: {
+    padding: adjustToWidth(20),
   },
 }
 
