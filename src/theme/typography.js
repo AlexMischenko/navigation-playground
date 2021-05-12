@@ -134,6 +134,10 @@ const underline = {
   textDecorationLine: 'underline',
 }
 
+const capitalize = {
+  textTransform: 'capitalize',
+}
+
 const sectionText = {
   ...subHeadline,
   color: colors.greyDarken,
@@ -170,6 +174,7 @@ const textStyles = StyleSheet.create({
   caption2Bold,
   upperCase,
   underline,
+  capitalize,
   sectionText,
   errorText,
 })

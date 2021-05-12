@@ -51,7 +51,7 @@ const Login = ({ navigation, route }) => {
         <View style={theme.helpers.flex1} />
         <View style={theme.helpers.flex1JustifyContentCenter}>
           <Text style={[cs.titleBlock, theme.textStyles.title1]}>Login</Text>
-          <View style={theme.helpers.ph30}>
+          <View style={theme.helpers.ph20}>
             <StyledFormInput
               style={theme.helpers.mb16}
               name="username"

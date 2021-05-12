@@ -1,8 +1,9 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
-import { StyleSheet, View, Text } from 'react-native'
+import { View, Text } from 'react-native'
 
+import theme from '../theme'
 import StyledInput from './StyledInput'
 
 const StyledFormInput = ({ control, name, title, errors, style, ...props }) => {
@@ -19,20 +20,18 @@ const StyledFormInput = ({ control, name, title, errors, style, ...props }) => {
             value={value}
             errors={errors}
             autoCapitalize="none"
+            error={errors[name]}
             {...props}
           />
-          <ErrorMessage errors={errors} name={name} as={<Text style={cs.errorText} />} />
+          <ErrorMessage
+            errors={errors}
+            name={name}
+            as={<Text style={[theme.textStyles.errorText, theme.helpers.pl5]} />}
+          />
         </View>
       )}
     />
   )
 }
-
-const cs = StyleSheet.create({
-  errorText: {
-    color: 'red',
-    fontSize: 12,
-  },
-})
 
 export default StyledFormInput

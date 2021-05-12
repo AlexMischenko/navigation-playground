@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, TextInput } from 'react-native'
 
-import { adjustToWidth, adjustFont } from '../utils/styleHelpers'
+import theme from '../theme'
+import { adjustToWidth } from '../utils/styleHelpers'
 
 const StyledInput = ({
   title,
@@ -27,11 +28,11 @@ const StyledInput = ({
   }
 
   return (
-    <View style={[cs.inputContainer, style]} elevation={5}>
-      <Text style={[cs.inputTitleText, cs.titleMargin, titleStyle]}>{title}</Text>
+    <View style={style} elevation={5}>
+      <Text style={[cs.inputTitleText, theme.helpers.mb8, titleStyle]}>{title}</Text>
       <View style={[cs.inputBlock, showError && cs.errorBackground]} elevation={5}>
         <TextInput
-          style={[cs.input, textInputStyle]}
+          style={[theme.helpers.flex1, textInputStyle]}
           {...props}
           value={localValue}
           onChangeText={handleChangeText}
@@ -42,10 +43,8 @@ const StyledInput = ({
 }
 
 const cs = StyleSheet.create({
-  inputContainer: {},
   inputTitleText: {
-    fontSize: adjustFont(14),
-    color: 'black',
+    ...theme.textStyles.callout,
     textTransform: 'capitalize',
   },
   inputBlock: {
@@ -57,23 +56,17 @@ const cs = StyleSheet.create({
     paddingLeft: adjustToWidth(17),
     paddingRight: adjustToWidth(16.5),
     borderRadius: adjustToWidth(16),
-    backgroundColor: 'white',
-    shadowColor: 'gray',
-    shadowOpacity: 0.07,
+    backgroundColor: theme.colors.white,
+    shadowColor: theme.colors.grey,
+    shadowOpacity: 0.15,
     shadowRadius: adjustToWidth(10),
     shadowOffset: {
       width: adjustToWidth(0),
       height: adjustToWidth(0),
     },
   },
-  input: {
-    flex: 1,
-  },
-  titleMargin: {
-    marginBottom: adjustToWidth(9.5),
-  },
   errorBackground: {
-    borderWidth: adjustToWidth(1),
+    borderWidth: StyleSheet.hairlineWidth,
     borderColor: 'red',
   },
 })
