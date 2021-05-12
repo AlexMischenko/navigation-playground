@@ -351,6 +351,11 @@ export const layoutHelpers = StyleSheet.create({
     flex: 1,
     paddingTop: statusBarOffset,
   },
+  scrollWrap: {
+    flexGrow: 1,
+    paddingHorizontal: adjustToWidth(20),
+    justifyContent: 'space-between',
+  },
 
   page: {
     flex: 1,

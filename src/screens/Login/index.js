@@ -2,21 +2,13 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  Pressable,
-  Platform,
-  KeyboardAvoidingView,
-  Alert,
-} from 'react-native'
+import { ScrollView, View, Text, Pressable, Alert } from 'react-native'
 
 import { loginUser } from '../../services/user'
 import Routes from '../../routes'
 import { loginValidationSchema } from '../../utils/validators'
 import theme from '../../theme'
+import Layout from '../../components/Layout'
 import StyledFormInput from '../../components/StyledFormInput'
 import cs from './styles'
 
@@ -50,18 +42,16 @@ const Login = ({ navigation, route }) => {
   }
 
   return (
-    <SafeAreaView style={theme.helpers.page}>
+    <Layout keyboardPosition>
       <ScrollView
-        style={theme.helpers.flex1}
-        contentContainerStyle={theme.helpers.flex1}
+        contentContainerStyle={theme.helpers.scrollWrap}
+        keyboardShouldPersistTaps="handled"
         bounces={false}
       >
+        <View style={theme.helpers.flex1} />
         <View style={theme.helpers.flex1JustifyContentCenter}>
           <Text style={[cs.titleBlock, theme.textStyles.title1]}>Login</Text>
-          <KeyboardAvoidingView
-            style={theme.helpers.ph30}
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          >
+          <View style={theme.helpers.ph30}>
             <StyledFormInput
               style={theme.helpers.mb16}
               name="username"
@@ -72,9 +62,9 @@ const Login = ({ navigation, route }) => {
             <Pressable style={cs.submitButton} onPress={handleSubmit(onSubmit)}>
               <Text style={[theme.textStyles.title3, cs.whiteColor]}>Log In</Text>
             </Pressable>
-          </KeyboardAvoidingView>
+          </View>
         </View>
-        <View style={cs.footerBlock}>
+        <View style={theme.helpers.alignItemsCenter}>
           <Pressable style={theme.helpers.pb20} onPress={onSignupPress}>
             <Text style={[theme.textStyles.subHeadlineBold, cs.pressableTextColor]}>Sign Up</Text>
           </Pressable>
@@ -83,7 +73,7 @@ const Login = ({ navigation, route }) => {
           </Pressable>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </Layout>
   )
 }
 

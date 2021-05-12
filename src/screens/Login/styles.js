@@ -8,13 +8,6 @@ export default StyleSheet.create({
     alignSelf: 'center',
     marginBottom: adjustToWidth(20),
   },
-  formInput: {
-    height: adjustToWidth(60),
-    width: '100%',
-    paddingHorizontal: 15,
-    borderRadius: 15,
-    backgroundColor: '#EDF2F4',
-  },
   submitButton: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -22,10 +15,6 @@ export default StyleSheet.create({
     marginTop: adjustToWidth(30),
     borderRadius: adjustToWidth(10),
     backgroundColor: theme.colors.green,
-  },
-  footerBlock: {
-    height: adjustToWidth(100),
-    alignItems: 'center',
   },
   whiteColor: {
     color: theme.colors.white,
