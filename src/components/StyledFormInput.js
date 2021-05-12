@@ -21,7 +21,7 @@ const StyledFormInput = ({ control, name, title, errors, style, ...props }) => {
             autoCapitalize="none"
             {...props}
           />
-          <ErrorMessage errors={errors} name="username" as={<Text style={cs.errorText} />} />
+          <ErrorMessage errors={errors} name={name} as={<Text style={cs.errorText} />} />
         </View>
       )}
     />

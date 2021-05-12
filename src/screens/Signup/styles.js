@@ -1,60 +1,25 @@
 import { StyleSheet } from 'react-native'
 
+import theme from '../../theme'
+import { adjustToWidth } from '../../utils/styleHelpers'
+
 export default StyleSheet.create({
-  signupPageContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'white',
-  },
   titleBlock: {
     alignSelf: 'center',
-    marginBottom: 20,
-  },
-  titleText: {
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-  formBlock: {
-    paddingHorizontal: 30,
-  },
-  formInputBlock: {
-    marginTop: 20,
-  },
-  formInput: {
-    height: 60,
-    width: '100%',
-    paddingHorizontal: 15,
-    borderRadius: 15,
-    backgroundColor: '#EDF2F4',
+    marginBottom: adjustToWidth(20),
   },
   submitButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
-    marginTop: 30,
-    borderRadius: 10,
-    backgroundColor: '#34C759',
+    height: adjustToWidth(60),
+    marginTop: adjustToWidth(30),
+    borderRadius: adjustToWidth(10),
+    backgroundColor: theme.colors.green,
   },
-  submitButtonText: {
-    color: 'white',
-    fontSize: 14,
+  whiteColor: {
+    color: theme.colors.white,
   },
-
-  footerBlock: {
-    position: 'absolute',
-    bottom: 50, // TODO: Fix on iOS/Android
-    alignSelf: 'center',
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  footerButton: {
-    paddingBottom: 20,
-  },
-  footerText: {
-    fontSize: 15,
-  },
-  signinText: {
-    color: '#4A80F0',
-    fontWeight: 'bold',
+  pressableTextColor: {
+    color: theme.colors.theme2,
   },
 })

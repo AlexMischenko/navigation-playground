@@ -1,53 +1,73 @@
 import React from 'react'
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  Platform,
-  KeyboardAvoidingView,
-} from 'react-native'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { ScrollView, View, Text, Pressable } from 'react-native'
 
 import Routes from '../../routes'
+import { signupValidationSchema } from '../../utils/validators'
+import theme from '../../theme'
+import Layout from '../../components/Layout'
+import StyledFormInput from '../../components/StyledFormInput'
 import cs from './styles'
 
 const Signup = ({ navigation, route }) => {
-  const onSinginPress = () => {
-    navigation.navigate(Routes.Login)
+  const formDefaultValues = {
+    username: '',
+    email: '',
+    password: '',
+  }
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: formDefaultValues,
+    resolver: yupResolver(signupValidationSchema),
+  })
+
+  const onSubmit = async (data) => {
+    console.log('🚀 ~ file: Signup ~ line 30 ~ onSubmit ~ data', data)
   }
 
   return (
-    <SafeAreaView style={cs.signupPageContainer}>
-      <Text style={[cs.titleBlock, cs.titleText]}>Sign Up</Text>
-      <KeyboardAvoidingView
-        style={cs.formBlock}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <Layout keyboardPosition>
+      <ScrollView
+        contentContainerStyle={theme.helpers.scrollWrap}
+        keyboardShouldPersistTaps="handled"
+        bounces={false}
       >
-        <View style={cs.formInputBlock}>
-          <Text>Username</Text>
-          <TextInput style={cs.formInput} />
+        <View style={theme.helpers.flex1} />
+        <View style={theme.helpers.flex1JustifyContentCenter}>
+          <Text style={[cs.titleBlock, theme.textStyles.title1]}>Sign Up</Text>
+          <View style={theme.helpers.ph30}>
+            <StyledFormInput
+              style={theme.helpers.mb16}
+              name="username"
+              control={control}
+              errors={errors}
+            />
+            <StyledFormInput
+              style={theme.helpers.mb16}
+              name="email"
+              control={control}
+              errors={errors}
+            />
+            <StyledFormInput name="password" control={control} errors={errors} />
+            <Pressable style={cs.submitButton} onPress={handleSubmit(onSubmit)}>
+              <Text style={[theme.textStyles.title3, cs.whiteColor]}>Sign Up</Text>
+            </Pressable>
+          </View>
         </View>
-        <View style={cs.formInputBlock}>
-          <Text>Email</Text>
-          <TextInput style={cs.formInput} />
+        <View style={theme.helpers.alignItemsCenter}>
+          <Pressable style={theme.helpers.pb20} onPress={() => navigation.navigate(Routes.Login)}>
+            <Text style={theme.textStyles.subHeadline}>
+              Already have an account ? <Text style={cs.pressableTextColor}>Sign In.</Text>
+            </Text>
+          </Pressable>
         </View>
-        <View style={cs.formInputBlock}>
-          <Text>Password</Text>
-          <TextInput style={cs.formInput} />
-        </View>
-        <Pressable style={cs.submitButton}>
-          <Text style={cs.submitButtonText}>Sign Un</Text>
-        </Pressable>
-      </KeyboardAvoidingView>
-      <View style={cs.footerBlock}>
-        <Pressable style={cs.footerButton} onPress={onSinginPress}>
-          <Text style={cs.footerText}>
-            Already have an account ? <Text style={cs.signinText}>Sign In.</Text>
-          </Text>
-        </Pressable>
-      </View>
-    </SafeAreaView>
+      </ScrollView>
+    </Layout>
   )
 }
 
