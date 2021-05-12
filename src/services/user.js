@@ -6,7 +6,7 @@ import {
   setUserToken,
   logoutUser as logoutUserAction,
 } from '../redux/reducers/userSlice'
-import { setLoading } from '../redux/reducers/uiSlice'
+import { setLoading, setSignout } from '../redux/reducers/uiSlice'
 import { updateToken } from '../utils/request'
 import { setItem, clearAll } from '../utils/storage'
 import { AUTH_TOKEN_KEY } from '../utils/constants'
@@ -18,6 +18,7 @@ export const loginUser = ({ username, password }) => async (dispatch) => {
   try {
     const loginResponse = await loginUserApi({ username, password })
     dispatch(setLoading(false))
+    dispatch(setSignout(false))
     dispatch(setUserToken(loginResponse.token))
     await setItem(AUTH_TOKEN_KEY, loginResponse.token)
 
@@ -59,5 +60,6 @@ export const logoutUser = (withRequest = false) => async (dispatch) => {
 
   await clearAll()
   updateToken(null)
+  dispatch(setSignout(true))
   dispatch(logoutUserAction())
 }

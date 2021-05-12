@@ -45,8 +45,12 @@ const TabNavigator = () => {
 }
 
 const MainStack = () => {
-  const currentUser = useSelector((store) => store.user.currentUser)
-  const isSignedIn = !isEmpty(currentUser)
+  const { token, currentUser, isSignout } = useSelector(({ user, ui }) => ({
+    token: user.token,
+    currentUser: user.currentUser,
+    isSignout: ui.isSignout,
+  }))
+  const isSignedIn = token && !isEmpty(currentUser)
 
   return (
     <Stack.Navigator>
@@ -65,7 +69,14 @@ const MainStack = () => {
         </>
       ) : (
         <>
-          <Stack.Screen name={Routes.Login} component={Login} options={NoHeader} />
+          <Stack.Screen
+            name={Routes.Login}
+            component={Login}
+            options={{
+              ...NoHeader,
+              animationTypeForReplace: isSignout ? 'pop' : 'push',
+            }}
+          />
           <Stack.Screen name={Routes.Signup} component={Signup} options={NoHeader} />
         </>
       )}
