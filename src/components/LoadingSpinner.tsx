@@ -1,6 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { View, ActivityIndicator, StyleSheet } from 'react-native'
+
+import { useSelector } from '../hooks'
 
 const LoadingSpinner = () => {
   const isLoading = useSelector((state) => state.ui.isLoading)

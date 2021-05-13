@@ -1,22 +1,23 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { ScrollView, View, Text, Pressable, Alert } from 'react-native'
+import { ScrollView, View, Text, Pressable } from 'react-native'
 
-import { loginUser } from '../../services/user'
+import { useDispatch } from '../../hooks'
+import { signUpUser } from '../../services/user'
 import Routes from '../../routes'
-import { loginValidationSchema } from '../../utils/validators'
+import { signUpValidationSchema } from '../../utils/validators'
 import theme from '../../theme'
 import Layout from '../../components/Layout'
 import StyledFormInput from '../../components/StyledFormInput'
 import cs from './styles'
 
-const Login = ({ navigation, route }) => {
+const SignUp = ({ navigation, route }) => {
   const dispatch = useDispatch()
 
   const formDefaultValues = {
     username: '',
+    email: '',
     password: '',
   }
 
@@ -26,19 +27,11 @@ const Login = ({ navigation, route }) => {
     formState: { errors },
   } = useForm({
     defaultValues: formDefaultValues,
-    resolver: yupResolver(loginValidationSchema),
+    resolver: yupResolver(signUpValidationSchema),
   })
 
-  const onSignupPress = () => {
-    navigation.navigate(Routes.SignUp)
-  }
-
-  const onForgotPasswordPress = () => {
-    Alert.alert('Forgot password', 'Not implemeted yet :)')
-  }
-
   const onSubmit = async (data) => {
-    loginUser(data)(dispatch)
+    signUpUser(data)(dispatch)
   }
 
   return (
@@ -50,7 +43,7 @@ const Login = ({ navigation, route }) => {
       >
         <View style={theme.helpers.flex1} />
         <View style={theme.helpers.flex1JustifyContentCenter}>
-          <Text style={[cs.titleBlock, theme.textStyles.title1]}>Login</Text>
+          <Text style={[cs.titleBlock, theme.textStyles.title1]}>Sign Up</Text>
           <View style={theme.helpers.ph20}>
             <StyledFormInput
               style={theme.helpers.mb16}
@@ -58,18 +51,26 @@ const Login = ({ navigation, route }) => {
               control={control}
               errors={errors}
             />
+            <StyledFormInput
+              style={theme.helpers.mb16}
+              name="email"
+              control={control}
+              errors={errors}
+            />
             <StyledFormInput name="password" control={control} errors={errors} />
             <Pressable style={cs.submitButton} onPress={handleSubmit(onSubmit)}>
-              <Text style={[theme.textStyles.title3, cs.whiteColor]}>Log In</Text>
+              <Text style={[theme.textStyles.title3, cs.whiteColor]}>Sign Up</Text>
             </Pressable>
           </View>
         </View>
         <View style={theme.helpers.alignItemsCenter}>
-          <Pressable style={theme.helpers.pb20} onPress={onSignupPress}>
-            <Text style={[theme.textStyles.subHeadlineBold, cs.pressableTextColor]}>Sign Up</Text>
-          </Pressable>
-          <Pressable style={theme.helpers.pb20} onPress={onForgotPasswordPress}>
-            <Text style={theme.textStyles.subHeadline}>Forgot password ?</Text>
+          <Pressable style={theme.helpers.pb20} onPress={() => navigation.navigate(Routes.Login)}>
+            <Text style={theme.textStyles.subHeadline}>
+              Already have an account ?{' '}
+              <Text style={[theme.textStyles.subHeadlineBold, cs.pressableTextColor]}>
+                Sign In.
+              </Text>
+            </Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -77,4 +78,4 @@ const Login = ({ navigation, route }) => {
   )
 }
 
-export default Login
+export default SignUp

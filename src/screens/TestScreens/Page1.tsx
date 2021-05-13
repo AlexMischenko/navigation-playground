@@ -1,7 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { SafeAreaView, Text, Pressable } from 'react-native'
 
+import { useDispatch } from '../../hooks'
 import { logoutUser } from '../../services/user'
 import Routes from '../../routes'
 import cs from './styles'

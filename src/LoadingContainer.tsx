@@ -1,9 +1,9 @@
 import _ from 'lodash'
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import { Alert } from 'react-native'
 import NetInfo from '@react-native-community/netinfo'
 
+import { useDispatch } from './hooks'
 import { refreshUser } from './services/user'
 import { engine } from './utils/request'
 import NoInternetIndicator from './components/NoInternetIndicator'

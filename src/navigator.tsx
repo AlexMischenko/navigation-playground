@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler'
 import { isEmpty } from 'lodash'
 import * as React from 'react'
-import { useSelector } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
+import { useSelector } from './hooks'
 import CustomNavigationHeader from './components/CustomNavigationHeader'
 import { NAVIGATION_STATE_KEY } from './utils/constants'
 import { setItem } from './utils/storage'
