@@ -1,5 +1,6 @@
+import React from 'react'
 import type { AxiosRequestConfig } from 'axios'
-import type { FieldErrors } from 'react-hook-form'
+import type { Control, FieldErrors } from 'react-hook-form'
 import type {
   TextInputProps,
   StyleProp,
@@ -32,8 +33,7 @@ export interface ILayoutProps {
 
 export interface IConditionalWrapperProps {
   condition: boolean;
-  // wrapper: (content: ReactNode) => ReactNode;
-  wrapper: any;
+  wrapper: (children: React.ReactNode) => any;
 }
 
 export interface IStyledInputProps extends Omit<TextInputProps, 'value'> {
@@ -49,7 +49,7 @@ export interface IStyledInputProps extends Omit<TextInputProps, 'value'> {
 }
 
 export interface IStyledFormInputProps extends Omit<IStyledInputProps, 'onChangeText'> {
-  control: any;
+  control: Control<any>; // Used "any" to avoid specific form type specification
   errors: FieldErrors;
   name: string;
 }
