@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, Pressable } from 'react-native'
 import Routes from '../../routes'
 import cs from './styles'
 
-const Modal3 = ({ navigation }) => {
+const Modal3 = ({ navigation }: any) => {
   const handleLoginNavigation = () => {
     navigation.navigate(Routes.MainStack, { screen: Routes.Login })
   }

@@ -8,7 +8,7 @@ import { refreshUser } from './services/user'
 import { engine } from './utils/request'
 import NoInternetIndicator from './components/NoInternetIndicator'
 
-const LoadingContainer = ({ children }) => {
+const LoadingContainer: React.FC<Record<string, unknown>> = ({ children }) => {
   const [isNetworkError, setIsNetworkError] = useState(false)
 
   const dispatch = useDispatch()

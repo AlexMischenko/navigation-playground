@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, TextInput } from 'react-native'
 
+import type { IStyledInputProps } from '../types'
 import theme from '../theme'
 import { adjustToWidth } from '../utils/styleHelpers'
 
-const StyledInput = ({
+const StyledInput: React.FC<IStyledInputProps> = ({
   title,
   style,
   titleStyle,
@@ -20,7 +21,7 @@ const StyledInput = ({
   const [localValue, setLocalValue] = useState(value ? `${value}` : '')
   const showError = error || disabled
 
-  const handleChangeText = (newValue) => {
+  const handleChangeText = (newValue: string) => {
     if (!validationRegEx || newValue.match(validationRegEx) || newValue === '') {
       setLocalValue(newValue)
       onChangeText(numbersOnly ? parseFloat(newValue) : newValue)
@@ -28,12 +29,12 @@ const StyledInput = ({
   }
 
   return (
-    <View style={style} elevation={5}>
+    <View style={style}>
       <Text style={[cs.inputTitleText, theme.helpers.mb8, titleStyle]}>{title}</Text>
-      <View style={[cs.inputBlock, showError && cs.errorBackground]} elevation={5}>
+      <View style={[cs.inputBlock, showError && cs.errorBackground]}>
         <TextInput
-          style={[theme.helpers.flex1, textInputStyle]}
           {...props}
+          style={[theme.helpers.flex1, textInputStyle]}
           value={localValue}
           onChangeText={handleChangeText}
         />
@@ -64,6 +65,7 @@ const cs = StyleSheet.create({
       width: adjustToWidth(0),
       height: adjustToWidth(0),
     },
+    elevation: 3,
   },
   errorBackground: {
     borderWidth: StyleSheet.hairlineWidth,

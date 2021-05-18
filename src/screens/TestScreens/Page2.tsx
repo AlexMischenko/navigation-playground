@@ -1,16 +1,17 @@
 import React from 'react'
 import { SafeAreaView, Text, Pressable } from 'react-native'
 
+import type { IPage2ScreenProps } from '../../types'
 import Routes from '../../routes'
 import cs from './styles'
 
-const Page2 = ({ navigation, route }) => {
+const Page2: React.FC<IPage2ScreenProps> = ({ navigation }) => {
   const handleNavigation = () => {
     navigation.navigate(Routes.Page3, { title: 'Title passed from Page2' })
   }
 
   const handleTabNavigation = () => {
-    navigation.navigate(Routes.TabsNav)
+    navigation.navigate('TabsNav')
   }
 
   return (

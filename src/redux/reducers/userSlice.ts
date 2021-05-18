@@ -1,12 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { CurrentUser } from '../../types'
+import type { IUserSlice, ICurrentUser } from '../../types'
 
-interface userState {
-  currentUser: CurrentUser;
-  token?: string;
-}
-
-const initialState: userState = {
+const initialState: IUserSlice = {
   currentUser: null,
   token: null,
 }
@@ -15,7 +10,7 @@ const sliceConfig = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setCurrentUser(state, { payload }: PayloadAction<CurrentUser>) {
+    setCurrentUser(state, { payload }: PayloadAction<ICurrentUser>) {
       state.currentUser = { ...payload }
     },
     setUserToken(state, { payload }: PayloadAction<string>) {

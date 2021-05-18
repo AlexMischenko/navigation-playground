@@ -1,10 +1,11 @@
 import 'react-native-gesture-handler'
 import { isEmpty } from 'lodash'
 import * as React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, NavigationState } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
+import type { IMainStackParamList, IRootNavigatorProps } from './types'
 import { useSelector } from './hooks'
 import CustomNavigationHeader from './components/CustomNavigationHeader'
 import { NAVIGATION_STATE_KEY } from './utils/constants'
@@ -24,7 +25,8 @@ import Modal3 from './screens/TestScreens/Modal3'
 import Login from './screens/Login'
 import SignUp from './screens/SignUp'
 
-const Stack = createStackNavigator()
+const RootStack = createStackNavigator()
+const MainStack = createStackNavigator<IMainStackParamList>()
 const Tab = createBottomTabNavigator()
 
 const NoHeader = { headerShown: false }
@@ -44,7 +46,7 @@ const TabNavigator = () => {
   )
 }
 
-const MainStack = () => {
+const MainStackNavigator = () => {
   const { token, currentUser, isSignout } = useSelector(({ user, ui }) => ({
     token: user.token,
     currentUser: user.currentUser,
@@ -53,23 +55,23 @@ const MainStack = () => {
   const isSignedIn = token && !isEmpty(currentUser)
 
   return (
-    <Stack.Navigator>
+    <MainStack.Navigator>
       {isSignedIn ? (
         <>
-          <Stack.Screen name={Routes.Page1} component={Page1} />
-          <Stack.Screen name={Routes.Page2} component={Page2} />
-          <Stack.Screen
-            name={Routes.Page3}
+          <MainStack.Screen name={Routes.Page1} component={Page1} />
+          <MainStack.Screen name={Routes.Page2} component={Page2} />
+          <MainStack.Screen
+            name="Page3"
             component={Page3}
-            options={({ route }) => ({
+            options={() => ({
               header: (props) => <CustomNavigationHeader {...props} />,
             })}
           />
-          <Stack.Screen name={Routes.TabsNav} component={TabNavigator} options={NoHeader} />
+          <MainStack.Screen name={Routes.TabsNav} component={TabNavigator} options={NoHeader} />
         </>
       ) : (
         <>
-          <Stack.Screen
+          <MainStack.Screen
             name={Routes.Login}
             component={Login}
             options={{
@@ -77,26 +79,26 @@ const MainStack = () => {
               animationTypeForReplace: isSignout ? 'pop' : 'push',
             }}
           />
-          <Stack.Screen name={Routes.SignUp} component={SignUp} options={NoHeader} />
+          <MainStack.Screen name={Routes.SignUp} component={SignUp} options={NoHeader} />
         </>
       )}
-    </Stack.Navigator>
+    </MainStack.Navigator>
   )
 }
 
-const RootNavigator = ({ initialState }) => {
-  const handleNavigationStateChange = (state) => {
+const RootNavigator: React.FC<IRootNavigatorProps> = ({ initialState }) => {
+  const handleNavigationStateChange = (state: NavigationState | undefined) => {
     setItem(NAVIGATION_STATE_KEY, JSON.stringify(state))
   }
 
   return (
     <NavigationContainer initialState={initialState} onStateChange={handleNavigationStateChange}>
-      <Stack.Navigator mode="modal" screenOptions={RootStackOptions}>
-        <Stack.Screen name={Routes.MainStack} component={MainStack} />
-        <Stack.Screen name={Routes.Modal1} component={Modal1} />
-        <Stack.Screen name={Routes.Modal2} component={Modal2} />
-        <Stack.Screen name={Routes.Modal3} component={Modal3} />
-      </Stack.Navigator>
+      <RootStack.Navigator screenOptions={RootStackOptions} mode="modal">
+        <RootStack.Screen name={Routes.MainStack} component={MainStackNavigator} />
+        <RootStack.Screen name={Routes.Modal1} component={Modal1} />
+        <RootStack.Screen name={Routes.Modal2} component={Modal2} />
+        <RootStack.Screen name={Routes.Modal3} component={Modal3} />
+      </RootStack.Navigator>
     </NavigationContainer>
   )
 }

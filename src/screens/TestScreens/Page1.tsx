@@ -6,7 +6,7 @@ import { logoutUser } from '../../services/user'
 import Routes from '../../routes'
 import cs from './styles'
 
-const Page1 = ({ navigation, route }) => {
+const Page1 = ({ navigation }: any) => {
   const dispatch = useDispatch()
 
   const handleChangeTitle = () => {

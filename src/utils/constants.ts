@@ -2,6 +2,7 @@ export const ENV_PROD = 'prod'
 export const ENV_STAGE = 'staging'
 export const ENV_DEV = 'development'
 export const ENV_DEV_OFFICE = 'dev_office'
+export const DEFAULT_ENV = ENV_PROD
 
 export const API_URLS = {
   [ENV_PROD]: 'https://api.navigation-playground.app/',

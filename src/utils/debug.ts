@@ -1,13 +1,13 @@
 import _ from 'lodash'
 const env = process.env.NODE_ENV
 
-export const log = (message, data = {}) => {
+export const log = (message: string, data = {}): void => {
   console.log(message, data)
 }
 
-export const requestLog = (data, type = 'common') => {
+export const requestLog = (data: any, type = 'common'): void => {
   if (env !== 'development') {
-    return null
+    return
   }
   const date = new Date()
   const dateString = `[${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}]`
@@ -20,6 +20,6 @@ export const requestLog = (data, type = 'common') => {
   }
 }
 
-export const error = (data) => {
+export const error = (data: any): void => {
   return requestLog(data, 'error')
 }

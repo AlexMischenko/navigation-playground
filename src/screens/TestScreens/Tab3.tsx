@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, SafeAreaView, Text, Pressable } from 'react-native'
 
-const Tab3 = ({ navigation, route }) => {
+const Tab3 = ({ navigation }: any) => {
   return (
     <SafeAreaView style={cs.page}>
       <Text style={[cs.titleBlock, cs.titleText]}>Tab 3</Text>

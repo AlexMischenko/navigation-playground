@@ -1,11 +1,12 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 
+import type { IRequestProps } from '../types'
 import { requestLog } from './debug'
 import { getUrl } from './url'
 
-export const request = async ({ url, type, method = 'get', ...props }) => {
-  const params = {
-    url: getUrl(url, type),
+export const request = async <T>({ url, method = 'get', ...props }: IRequestProps): Promise<T> => {
+  const params: AxiosRequestConfig = {
+    url: getUrl(url),
     method,
     ...props,
   }
@@ -19,7 +20,7 @@ export const request = async ({ url, type, method = 'get', ...props }) => {
 
 export const engine = axios
 
-export const updateToken = (token = null) => {
+export const updateToken = (token: string | null = null): boolean | string => {
   if (!token) {
     return delete engine.defaults.headers.Authorization
   } else {

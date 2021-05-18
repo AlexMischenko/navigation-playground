@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { IUiSlice } from '../../types'
 
-interface uiState {
-  isLoading: boolean;
-  isSignout: boolean;
-}
-
-const initialState: uiState = {
+const initialState: IUiSlice = {
   isLoading: false,
   isSignout: false,
 }

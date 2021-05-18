@@ -3,7 +3,7 @@ import { StyleSheet, SafeAreaView, Text, Pressable } from 'react-native'
 
 import Routes from '../../routes'
 
-const Tab2 = ({ navigation, route }) => {
+const Tab2 = ({ navigation }: any) => {
   const handleNavigationToStack = () => {
     navigation.dangerouslyGetParent()?.goBack()
   }

@@ -1,18 +1,19 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ScrollView, View, Text, Pressable, Alert } from 'react-native'
 
+import type { ILoginScreenProps, ILoginForm } from '../../types'
+import Routes from '../../routes'
 import { useDispatch } from '../../hooks'
 import { loginUser } from '../../services/user'
-import Routes from '../../routes'
 import { loginValidationSchema } from '../../utils/validators'
 import theme from '../../theme'
 import Layout from '../../components/Layout'
 import StyledFormInput from '../../components/StyledFormInput'
 import cs from './styles'
 
-const Login = ({ navigation }) => {
+const Login: React.FC<ILoginScreenProps> = ({ navigation }) => {
   const dispatch = useDispatch()
 
   const formDefaultValues = {
@@ -24,7 +25,7 @@ const Login = ({ navigation }) => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ILoginForm>({
     defaultValues: formDefaultValues,
     resolver: yupResolver(loginValidationSchema),
   })
@@ -37,7 +38,7 @@ const Login = ({ navigation }) => {
     Alert.alert('Forgot password', 'Not implemeted yet :)')
   }
 
-  const onSubmit = async (data) => {
+  const onSubmit: SubmitHandler<ILoginForm> = (data) => {
     loginUser(data)(dispatch)
   }
 

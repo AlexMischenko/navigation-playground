@@ -9,7 +9,7 @@ const { height, width } = Dimensions.get('window')
 export const isIos = Platform.OS === 'ios'
 export const isAndroid = Platform.OS === 'android'
 
-const statusBarOffset = isAndroid ? StatusBar.currentHeight : 0
+const statusBarOffset = isAndroid && StatusBar.currentHeight ? StatusBar.currentHeight : 0
 const headerWrapperHeight = adjustToWidth(44)
 const tabBarHeight = adjustToWidth(49)
 const isSmallScreen = width / height >= 0.56
@@ -362,7 +362,7 @@ export const layoutHelpers = StyleSheet.create({
     backgroundColor: colors.white,
   },
   overlay: {
-    ...StyleSheet.absoluteFill,
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: colors.black80,
   },
   hiddenButtonWrapper: {

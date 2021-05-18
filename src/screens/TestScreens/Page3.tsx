@@ -1,10 +1,11 @@
 import React from 'react'
 import { SafeAreaView, Text, Pressable } from 'react-native'
 
+import type { IPage3ScreenProps } from '../../types'
 import Routes from '../../routes'
 import cs from './styles'
 
-const Page3 = ({ navigation, route }) => {
+const Page3: React.FC<IPage3ScreenProps> = ({ navigation }) => {
   const handleNavigation = () => {
     navigation.navigate(Routes.Page1)
   }

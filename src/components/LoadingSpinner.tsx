@@ -18,7 +18,7 @@ const LoadingSpinner = () => {
 
 const cs = StyleSheet.create({
   overlay: {
-    ...StyleSheet.absoluteFill,
+    ...StyleSheet.absoluteFillObject,
     zIndex: 999,
     opacity: 0.7,
     backgroundColor: 'white',

@@ -5,60 +5,62 @@ const themeDeviceWidth = defaultDimensions.width
 const deviceWidth = Dimensions.get('window').width
 
 // main adaptive helper
-export const adjustToWidth = (x, defaultWidth = themeDeviceWidth) =>
+export const adjustToWidth = (x: number, defaultWidth = themeDeviceWidth): number =>
   PixelRatio.roundToNearestPixel((x * deviceWidth) / defaultWidth)
 
-export const getPercentSize = (value) => {
+export const getPercentSize = (value: number): number => {
   const res = value / deviceWidth
   return Number(res.toFixed(4))
 }
 
-export const percentToValue = (percent) => {
+export const percentToValue = (percent: number): number => {
   return deviceWidth * percent
 }
 
 // default fonts min = 10, due to UI tips from google
-export const scaleMin = (x1, min, scale) => (x1 * scale > min ? x1 * scale : min)
+export const scaleMin = (x1: number, min: number, scale: number): number =>
+  x1 * scale > min ? x1 * scale : min
 // adjust fonts to some custom scale like SignUp checkboxes
-export const scaleFont = (x, scale) => scaleMin(x, 8, scale)
+export const scaleFont = (x: number, scale: number): number => scaleMin(x, 8, scale)
 // adjust fonts to screen width
-export const adjustFont = (x, defaultWidth = themeDeviceWidth) =>
+export const adjustFont = (x: number, defaultWidth = themeDeviceWidth): number =>
   scaleFont(x, deviceWidth / defaultWidth)
 
 // use it wisely because there is roundToNearestPixel what can cause graphic artifacts
-export const adjustToWidthPrecisely = (x, defaultWidth = themeDeviceWidth) =>
+export const adjustToWidthPrecisely = (x: number, defaultWidth = themeDeviceWidth): number =>
   (x * deviceWidth) / defaultWidth
 
 /* eslint-disable no-bitwise */
-export const isDarkColor = (color) => {
+export const isDarkColor = (color: string): boolean => {
   // Variables for red, green, blue values
-  var r, g, b, hsp
+  let r: number, g: number, b: number
 
   // Check the format of the color, HEX or RGB?
   if (color.match(/^rgb/)) {
     // If RGB --> store the red, green, blue values in separate variables
-    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/)
+    const rgbChannels =
+      color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/) || []
 
-    r = color[1]
-    g = color[2]
-    b = color[3]
+    r = +rgbChannels[1]
+    g = +rgbChannels[2]
+    b = +rgbChannels[3]
   } else {
     // If hex --> Convert it to RGB: http://gist.github.com/983661
-    color = +('0x' + color.slice(1).replace(color.length < 5 && /./g, '$&$&'))
+    const hexNum = +('0x' + color.slice(1).replace(color.length < 5 ? /./g : /^$/g, '$&$&'))
 
-    r = color >> 16
-    g = (color >> 8) & 255
-    b = color & 255
+    r = hexNum >> 16
+    g = (hexNum >> 8) & 255
+    b = hexNum & 255
   }
 
   // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
-  hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b))
+  const hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b))
 
   // Using the HSP value, determine whether the color is light or dark
   return hsp < 127.5
 }
 
-export const hexOpacity = (hex, opacity) => {
+export const hexOpacity = (hex: string, opacity: number): string => {
   if (typeof hex !== 'string' || !/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex))
     throw new Error('Invalid hexadecimal color value')
   if (typeof opacity !== 'number' || opacity > 1 || opacity < 0)

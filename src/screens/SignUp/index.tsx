@@ -1,18 +1,19 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ScrollView, View, Text, Pressable } from 'react-native'
 
+import type { ISignUpScreenProps, ISignUpForm } from '../../types'
+import Routes from '../../routes'
 import { useDispatch } from '../../hooks'
 import { signUpUser } from '../../services/user'
-import Routes from '../../routes'
 import { signUpValidationSchema } from '../../utils/validators'
 import theme from '../../theme'
 import Layout from '../../components/Layout'
 import StyledFormInput from '../../components/StyledFormInput'
 import cs from './styles'
 
-const SignUp = ({ navigation, route }) => {
+const SignUp: React.FC<ISignUpScreenProps> = ({ navigation }) => {
   const dispatch = useDispatch()
 
   const formDefaultValues = {
@@ -25,12 +26,12 @@ const SignUp = ({ navigation, route }) => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ISignUpForm>({
     defaultValues: formDefaultValues,
     resolver: yupResolver(signUpValidationSchema),
   })
 
-  const onSubmit = async (data) => {
+  const onSubmit: SubmitHandler<ISignUpForm> = (data) => {
     signUpUser(data)(dispatch)
   }
 

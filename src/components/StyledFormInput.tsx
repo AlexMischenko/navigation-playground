@@ -3,10 +3,18 @@ import { Controller } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { View, Text } from 'react-native'
 
+import type { IStyledFormInputProps } from '../types'
 import theme from '../theme'
 import StyledInput from './StyledInput'
 
-const StyledFormInput = ({ control, name, title, errors, style, ...props }) => {
+const StyledFormInput: React.FC<IStyledFormInputProps> = ({
+  control,
+  name,
+  title,
+  errors,
+  style,
+  ...props
+}) => {
   return (
     <Controller
       name={name}
@@ -14,14 +22,13 @@ const StyledFormInput = ({ control, name, title, errors, style, ...props }) => {
       render={({ field: { onChange, onBlur, value } }) => (
         <View style={style}>
           <StyledInput
+            {...props}
             title={title || name}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={(value: string | number) => onChange(value)}
             value={value}
-            errors={errors}
             autoCapitalize="none"
             error={errors[name]}
-            {...props}
           />
           <ErrorMessage
             errors={errors}

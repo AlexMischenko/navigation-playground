@@ -1,6 +1,14 @@
-export const loginUser = (data) => {
+import type {
+  ILoginUserPayload,
+  ILoginUserResponse,
+  ISignUpUserPayload,
+  ISignUpUserResponse,
+  IGetUserResponse,
+} from '../types'
+
+export const loginUser = (data: ILoginUserPayload): Promise<ILoginUserResponse> => {
   // TODO: Should be replaced with real API call
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         user: {
@@ -14,9 +22,9 @@ export const loginUser = (data) => {
   })
 }
 
-export const signUpUser = (data) => {
+export const signUpUser = (data: ISignUpUserPayload): Promise<ISignUpUserResponse> => {
   // TODO: Should be replaced with real API call
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         user: {
@@ -29,16 +37,16 @@ export const signUpUser = (data) => {
   })
 }
 
-export const logoutUser = () => {
+export const logoutUser = (): Promise<boolean> => {
   // TODO: Should be replaced with real API call
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(true)
     }, 500)
   })
 }
 
-export const getUser = (alwaysApproved = true) => {
+export const getUser = (alwaysApproved = true): Promise<IGetUserResponse> => {
   // TODO: Should be replaced with real API call
   return new Promise((resolve, reject) => {
     setTimeout(() => {

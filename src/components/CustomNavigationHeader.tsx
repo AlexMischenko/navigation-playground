@@ -1,14 +1,21 @@
 import React from 'react'
 import { StyleSheet, View, Text, Pressable } from 'react-native'
+import type { StackHeaderProps } from '@react-navigation/stack'
 
-const CustomNavigationHeader = ({ navigation, scene: { route, descriptor } }) => {
+const CustomNavigationHeader: React.FC<StackHeaderProps> = ({
+  navigation,
+  scene: { route, descriptor },
+}) => {
   const { options } = descriptor
+  const params: any = route.params
+  const paramsTitle = params?.title
+
   return (
     <View style={cs.headerContainer}>
       <Pressable style={cs.backButtonBlock} onPress={() => navigation.goBack()}>
         <Text style={cs.backButtonText}>Back</Text>
       </Pressable>
-      <Text style={cs.titleText}>{route.params?.title || options.title}</Text>
+      <Text style={cs.titleText}>{paramsTitle || options.title}</Text>
     </View>
   )
 }

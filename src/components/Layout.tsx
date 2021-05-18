@@ -1,23 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactNode } from 'react'
 import { ImageBackground, KeyboardAvoidingView, Platform } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import type { KeyboardAvoidingViewProps as IKeyboardAvoidingViewProps } from 'react-native'
 
+import { ILayoutProps, IConditionalWrapperProps } from '../types'
 import theme from '../theme'
 import { adjustToWidth } from '../utils/styleHelpers'
 
 const keyboardDefaultBehavior = Platform.OS === 'ios' ? 'padding' : 'height'
-const keyboardPositionBehavior = Platform.OS === 'ios' ? 'position' : null
+const keyboardPositionBehavior = Platform.OS === 'ios' ? 'position' : undefined
 
-const ConditionalWrapper = ({ condition, wrapper, children }) =>
+const ConditionalWrapper: React.FC<IConditionalWrapperProps> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children
 
-const Layout = ({
+const Layout: React.FC<ILayoutProps> = ({
+  children,
   background,
   backgroundImage,
   edges,
   container,
-  children,
   keyboardPosition,
   noKeyboard,
 }) => {
@@ -26,7 +27,7 @@ const Layout = ({
     backgroundColor: background,
     ...containerStyle,
   }
-  const keyboardAvoidProps = {
+  const keyboardAvoidProps: IKeyboardAvoidingViewProps = {
     behavior: keyboardPosition ? keyboardPositionBehavior : keyboardDefaultBehavior,
     style: [theme.helpers.flex1, { overflow: 'hidden' }],
     contentContainerStyle: theme.helpers.flex1,
@@ -34,12 +35,12 @@ const Layout = ({
 
   return (
     <ConditionalWrapper
-      condition={backgroundImage}
-      wrapper={(children) => (
+      condition={!!backgroundImage}
+      wrapper={(children: ReactNode) => (
         <ImageBackground
           style={[theme.helpers.flex1, containerStyle]}
           resizeMode="cover"
-          source={backgroundImage}
+          source={backgroundImage || { uri: undefined }}
         >
           {children}
         </ImageBackground>
@@ -51,7 +52,7 @@ const Layout = ({
       >
         <ConditionalWrapper
           condition={!noKeyboard}
-          wrapper={(children) => (
+          wrapper={(children: ReactNode) => (
             <KeyboardAvoidingView {...keyboardAvoidProps}>{children}</KeyboardAvoidingView>
           )}
         >
@@ -60,14 +61,6 @@ const Layout = ({
       </SafeAreaView>
     </ConditionalWrapper>
   )
-}
-
-Layout.propTypes = {
-  background: PropTypes.string,
-  backgroundImage: PropTypes.any,
-  edges: PropTypes.arrayOf(PropTypes.string),
-  children: PropTypes.node,
-  noArea: PropTypes.bool,
 }
 
 Layout.defaultProps = {

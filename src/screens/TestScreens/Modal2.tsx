@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, Pressable } from 'react-native'
 import Routes from '../../routes'
 import cs from './styles'
 
-const Modal2 = ({ navigation }) => {
+const Modal2 = ({ navigation }: any) => {
   return (
     <View style={cs.wrapper}>
       <Pressable style={[cs.overlayBlock, cs.bgModal2]} onPress={() => navigation.goBack()} />

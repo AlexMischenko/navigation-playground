@@ -3,7 +3,7 @@ import { trimStart, trimEnd } from 'lodash'
 import config from '../config'
 import { ENV_STAGE, ENV_DEV, ENV_PROD } from './constants'
 
-export const getUrl = (path) => {
+export const getUrl = (path: string): string => {
   const env = process.env.ENV
   let apiUrl = config.apiRootStage
   switch (env) {

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 
+import type { ISafeAreaEdges } from '../types'
 import { adjustToWidth } from '../utils/styleHelpers'
 import colors from './colors'
 import textStyles from './typography'
@@ -13,7 +14,7 @@ const borderRadius = {
   lg: adjustToWidth(14),
 }
 
-const coloredDot = (size, color = colors.white) => ({
+const coloredDot = (size: number, color = colors.white) => ({
   width: adjustToWidth(size),
   height: adjustToWidth(size),
   borderRadius: adjustToWidth(size / 2),
@@ -43,7 +44,7 @@ const buttons = StyleSheet.create({
   },
 })
 
-const safeAreaEdges = {
+const safeAreaEdges: ISafeAreaEdges = {
   top: ['top'],
   bottom: ['bottom'],
   both: ['top', 'bottom'],
