@@ -4,12 +4,13 @@ module.exports = {
     '@react-native-community',
     'prettier',
     'eslint:recommended',
-    'plugin:react/recommended',
+    'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
+    'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
   ],
-  parser: 'babel-eslint',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true, // Allows for the parsing of JSX
     },
   },
   plugins: ['react', 'prettier', 'import'],
@@ -28,7 +29,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '16.13.1',
+      version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
   globals: {
