@@ -36,11 +36,14 @@ const Login: React.FC<ILoginScreenProps> = ({ navigation }) => {
   }
 
   const onForgotPasswordPress = () => {
-    Alert.alert('Forgot password', 'Not implemeted yet :)')
+    dispatch({ type: 'HELLO_SAGA', payload: 5 })
+    // Alert.alert('Forgot password', 'Not implemeted yet :)')
   }
 
   const onSubmit: SubmitHandler<ILoginForm> = (data) => {
-    loginUser(data)(dispatch)
+    // loginUser(data)(dispatch)
+
+    dispatch({ type: 'LOGIN_REQUEST', payload: data })
   }
 
   return (
