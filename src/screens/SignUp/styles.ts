@@ -15,7 +15,7 @@ export default (theme: ITheme): any =>
       height: adjustToWidth(60),
       marginTop: adjustToWidth(30),
       borderRadius: theme.borderRadius.lg,
-      backgroundColor: theme.colors.green,
+      backgroundColor: theme.colors.success,
     },
     whiteColor: {
       color: theme.colors.white,
