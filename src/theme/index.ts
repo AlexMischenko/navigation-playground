@@ -76,18 +76,3 @@ export const darkTheme: ITheme = {
   ...theme,
   colors: { ...theme.colors },
 }
-
-export default {
-  isIos,
-  isAndroid,
-  sizes,
-  colors,
-  helpers,
-  textStyles,
-  borderRadius,
-
-  ui,
-  buttons,
-  safeAreaEdges,
-  mediaViewer,
-}
