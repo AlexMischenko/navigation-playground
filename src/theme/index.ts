@@ -74,7 +74,7 @@ export const theme: ITheme = {
 
 export const darkTheme: ITheme = {
   ...theme,
-  colors: { ...theme.colors, green: '#4518DB' },
+  colors: { ...theme.colors },
 }
 
 export default {

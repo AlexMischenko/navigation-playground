@@ -4,7 +4,7 @@ import { ErrorMessage } from '@hookform/error-message'
 import { View, Text } from 'react-native'
 
 import type { IStyledFormInputProps } from '../types'
-import theme from '../theme'
+import { useTheme } from '../hooks'
 import StyledInput from './StyledInput'
 
 const StyledFormInput: React.FC<IStyledFormInputProps> = ({
@@ -15,6 +15,7 @@ const StyledFormInput: React.FC<IStyledFormInputProps> = ({
   style,
   ...props
 }) => {
+  const theme = useTheme()
   return (
     <Controller
       name={name}
