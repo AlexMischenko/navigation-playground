@@ -7,6 +7,7 @@ export type TAppDispatch = typeof store.dispatch
 export interface IUiSlice {
   isLoading: boolean;
   isSignout: boolean;
+  darkMode: boolean;
 }
 
 export interface IUserSlice {

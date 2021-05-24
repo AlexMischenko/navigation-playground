@@ -57,6 +57,26 @@ const mediaViewer = {
   },
 }
 
+export const theme = {
+  isIos,
+  isAndroid,
+  sizes,
+  colors,
+  helpers,
+  textStyles,
+  borderRadius,
+
+  ui,
+  buttons,
+  safeAreaEdges,
+  mediaViewer,
+}
+
+export const darkTheme = {
+  ...theme,
+  colors: { ...theme.colors, green: '#4518DB' },
+}
+
 export default {
   isIos,
   isAndroid,

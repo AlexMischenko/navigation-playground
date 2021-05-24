@@ -6,6 +6,7 @@ import NetInfo from '@react-native-community/netinfo'
 import { useDispatch } from './hooks'
 import { refreshUser } from './services/user'
 import { engine } from './utils/request'
+import { withThemeContext } from './components/HOC/ThemeContext'
 import NoInternetIndicator from './components/NoInternetIndicator'
 
 const LoadingContainer: React.FC<Record<string, unknown>> = ({ children }) => {
@@ -83,4 +84,4 @@ const LoadingContainer: React.FC<Record<string, unknown>> = ({ children }) => {
   )
 }
 
-export default LoadingContainer
+export default withThemeContext(LoadingContainer)
