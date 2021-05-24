@@ -1,5 +1,7 @@
 export type { TAppDispatch, TRootState, IUiSlice, IUserSlice } from './redux'
 
+export type { ITheme } from './theme'
+
 export type {
   IMainStackParamList,
   ITabNavigatorParamList,

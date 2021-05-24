@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
 
+import type { ITheme } from '../../types'
 import { adjustToWidth } from '../../utils/styleHelpers'
 
-export default (theme: any): any =>
+export default (theme: ITheme): any =>
   StyleSheet.create({
     titleBlock: {
       alignSelf: 'center',
