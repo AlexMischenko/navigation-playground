@@ -6,7 +6,6 @@ import store from './src/redux/store'
 import RootNavigator from './src/navigator'
 import SplashScreen from './src/screens/SplashScreen'
 import LoadingContainer from './src/LoadingContainer'
-import LoadingSpinner from './src/components/LoadingSpinner'
 import autoload from './src/utils/autoload'
 
 const App: React.FC = () => {
@@ -34,7 +33,6 @@ const App: React.FC = () => {
       <LoadingContainer>
         <RootNavigator initialState={initialNavigationState} />
       </LoadingContainer>
-      <LoadingSpinner />
     </Provider>
   )
 }

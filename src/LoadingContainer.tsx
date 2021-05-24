@@ -6,7 +6,9 @@ import NetInfo from '@react-native-community/netinfo'
 import { useDispatch } from './hooks'
 import { refreshUser } from './services/user'
 import { engine } from './utils/request'
+import { withThemeContext } from './components/HOC/ThemeContext'
 import NoInternetIndicator from './components/NoInternetIndicator'
+import LoadingSpinner from './components/LoadingSpinner'
 
 const LoadingContainer: React.FC<Record<string, unknown>> = ({ children }) => {
   const [isNetworkError, setIsNetworkError] = useState(false)
@@ -79,8 +81,9 @@ const LoadingContainer: React.FC<Record<string, unknown>> = ({ children }) => {
     <>
       {children}
       {isNetworkError && <NoInternetIndicator />}
+      <LoadingSpinner />
     </>
   )
 }
 
-export default LoadingContainer
+export default withThemeContext(LoadingContainer)

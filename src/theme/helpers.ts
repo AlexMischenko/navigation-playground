@@ -359,7 +359,7 @@ export const layoutHelpers = StyleSheet.create({
 
   page: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.background,
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,

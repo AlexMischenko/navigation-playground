@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import type { ISafeAreaEdges } from '../types'
+import type { ISafeAreaEdges, ITheme } from '../types'
 import { adjustToWidth } from '../utils/styleHelpers'
 import colors from './colors'
 import textStyles from './typography'
@@ -57,7 +57,7 @@ const mediaViewer = {
   },
 }
 
-export default {
+export const theme: ITheme = {
   isIos,
   isAndroid,
   sizes,
@@ -70,4 +70,9 @@ export default {
   buttons,
   safeAreaEdges,
   mediaViewer,
+}
+
+export const darkTheme: ITheme = {
+  ...theme,
+  colors: { ...theme.colors },
 }

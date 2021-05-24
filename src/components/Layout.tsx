@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import type { KeyboardAvoidingViewProps as IKeyboardAvoidingViewProps } from 'react-native'
 
 import { ILayoutProps, IConditionalWrapperProps } from '../types'
-import theme from '../theme'
+import { useTheme } from '../hooks'
 import { adjustToWidth } from '../utils/styleHelpers'
 
 const keyboardDefaultBehavior = Platform.OS === 'ios' ? 'padding' : 'height'
@@ -22,9 +22,11 @@ const Layout: React.FC<ILayoutProps> = ({
   keyboardPosition,
   noKeyboard,
 }) => {
+  const theme = useTheme()
+
   const containerStyle = { paddingHorizontal: adjustToWidth(container ? 20 : 0) }
   const backgroundStyle = {
-    backgroundColor: background,
+    backgroundColor: background || theme.colors.background,
     ...containerStyle,
   }
   const keyboardAvoidProps: IKeyboardAvoidingViewProps = {
@@ -48,7 +50,7 @@ const Layout: React.FC<ILayoutProps> = ({
     >
       <SafeAreaView
         style={[theme.helpers.flex1, !backgroundImage && backgroundStyle]}
-        edges={edges}
+        edges={edges || theme.safeAreaEdges.both}
       >
         <ConditionalWrapper
           condition={!noKeyboard}
@@ -63,9 +65,4 @@ const Layout: React.FC<ILayoutProps> = ({
   )
 }
 
-Layout.defaultProps = {
-  background: theme.colors.white,
-  backgroundImage: undefined,
-  edges: theme.safeAreaEdges.both,
-}
 export default Layout

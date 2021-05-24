@@ -1,17 +1,19 @@
 import React from 'react'
 import { View, ActivityIndicator, StyleSheet } from 'react-native'
 
-import { useSelector } from '../hooks'
+import { useSelector, useTheme } from '../hooks'
 
-const LoadingSpinner = () => {
+const LoadingSpinner: React.FC<Record<string, never>> = () => {
   const isLoading = useSelector((state) => state.ui.isLoading)
+  const theme = useTheme()
+
   if (!isLoading) {
     return null
   }
 
   return (
     <View style={cs.overlay}>
-      <ActivityIndicator color="#007AFF" size="large" />
+      <ActivityIndicator color={theme.colors.theme2} size="large" />
     </View>
   )
 }

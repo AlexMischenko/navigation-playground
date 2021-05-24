@@ -5,15 +5,16 @@ import { ScrollView, View, Text, Pressable } from 'react-native'
 
 import type { ISignUpScreenProps, ISignUpForm } from '../../types'
 import Routes from '../../routes'
-import { useDispatch } from '../../hooks'
+import { useDispatch, useTheme, useStyleSheet } from '../../hooks'
 import { signUpUser } from '../../services/user'
 import { signUpValidationSchema } from '../../utils/validators'
-import theme from '../../theme'
 import Layout from '../../components/Layout'
 import StyledFormInput from '../../components/StyledFormInput'
-import cs from './styles'
+import styles from './styles'
 
 const SignUp: React.FC<ISignUpScreenProps> = ({ navigation }) => {
+  const theme = useTheme()
+  const cs = useStyleSheet(styles)
   const dispatch = useDispatch()
 
   const formDefaultValues = {

@@ -5,15 +5,16 @@ import { ScrollView, View, Text, Pressable, Alert } from 'react-native'
 
 import type { ILoginScreenProps, ILoginForm } from '../../types'
 import Routes from '../../routes'
-import { useDispatch } from '../../hooks'
+import { useDispatch, useTheme, useStyleSheet } from '../../hooks'
 import { loginUser } from '../../services/user'
 import { loginValidationSchema } from '../../utils/validators'
-import theme from '../../theme'
 import Layout from '../../components/Layout'
 import StyledFormInput from '../../components/StyledFormInput'
-import cs from './styles'
+import styles from './styles'
 
 const Login: React.FC<ILoginScreenProps> = ({ navigation }) => {
+  const theme = useTheme()
+  const cs = useStyleSheet(styles)
   const dispatch = useDispatch()
 
   const formDefaultValues = {

@@ -4,6 +4,7 @@ import type { IUiSlice } from '../../types'
 const initialState: IUiSlice = {
   isLoading: false,
   isSignout: false,
+  darkMode: false,
 }
 
 const sliceConfig = createSlice({
@@ -16,9 +17,12 @@ const sliceConfig = createSlice({
     setSignout(state, { payload }: PayloadAction<boolean>) {
       state.isSignout = payload
     },
+    setDarkMode(state, { payload }: PayloadAction<boolean>) {
+      state.darkMode = payload
+    },
   },
 })
 
-export const { setLoading, setSignout } = sliceConfig.actions
+export const { setLoading, setSignout, setDarkMode } = sliceConfig.actions
 
 export default sliceConfig.reducer
