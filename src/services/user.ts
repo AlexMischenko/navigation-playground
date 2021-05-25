@@ -5,17 +5,17 @@ import {
   logoutUser as logoutUserApi,
   signUpUser as signUpUserApi,
   getUser,
-} from '../api/user'
+} from '@api/user'
 import {
   setCurrentUser,
   setUserToken,
   logoutUser as logoutUserAction,
-} from '../redux/reducers/userSlice'
-import { setLoading, setSignout } from '../redux/reducers/uiSlice'
-import { updateToken } from '../utils/request'
-import { setItem, clearAll } from '../utils/storage'
-import { AUTH_TOKEN_KEY } from '../utils/constants'
-import { log } from '../utils/debug'
+} from '@redux/reducers/userSlice'
+import { setLoading, setSignout } from '@redux/reducers/uiSlice'
+import { updateToken } from '@utils/request'
+import { setItem, clearAll } from '@utils/storage'
+import { AUTH_TOKEN_KEY } from '@utils/constants'
+import { log } from '@utils/debug'
 
 import type {
   TAppDispatch,
@@ -24,7 +24,7 @@ import type {
   ISignUpUserPayload,
   ISignUpUserResponse,
   IGetUserResponse,
-} from '../types'
+} from '@types'
 
 export const refreshUser = () => (dispatch: TAppDispatch): Promise<IGetUserResponse> => {
   dispatch(setLoading(true))

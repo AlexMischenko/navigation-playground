@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Pressable } from 'react-native'
 
-import Routes from '../../routes'
+import Routes from '@routes'
 import cs from './styles'
 
 const Modal3 = ({ navigation }: any) => {

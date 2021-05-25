@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, ActivityIndicator, StyleSheet } from 'react-native'
 
-import { useSelector, useTheme } from '../hooks'
+import { useSelector, useTheme } from '@hooks'
 
 const LoadingSpinner: React.FC<Record<string, never>> = () => {
   const isLoading = useSelector((state) => state.ui.isLoading)

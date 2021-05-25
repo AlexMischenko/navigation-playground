@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
-import type { ISafeAreaEdges, ITheme } from '../types'
-import { adjustToWidth } from '../utils/styleHelpers'
+import type { ISafeAreaEdges, ITheme } from '@types'
+import { adjustToWidth } from '@utils/styleHelpers'
 import colors from './colors'
 import textStyles from './typography'
 import helpers, { isIos, isAndroid, sizes } from './helpers'

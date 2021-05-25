@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
-const SplashScreen = () => {
+const SplashScreen: React.FC<Record<string, never>> = () => {
   return (
     <View style={cs.wrapper}>
       <Text style={cs.titleText}> SplashScreen </Text>

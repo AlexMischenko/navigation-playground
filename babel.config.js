@@ -21,6 +21,7 @@ module.exports = {
           '@api': './src/api',
           '@components': './src/components',
           '@hooks': './src/hooks',
+          '@redux': './src/redux',
           '@routes': './src/routes',
           '@screens': './src/screens',
           '@services': './src/services',

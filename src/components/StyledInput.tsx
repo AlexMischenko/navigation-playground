@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, TextInput } from 'react-native'
 
-import type { IStyledInputProps, ITheme } from '../types'
-import { useTheme, useStyleSheet } from '../hooks'
-import { adjustToWidth } from '../utils/styleHelpers'
+import type { IStyledInputProps, ITheme } from '@types'
+import { useTheme, useStyleSheet } from '@hooks'
+import { adjustToWidth } from '@utils/styleHelpers'
 
 const StyledInput: React.FC<IStyledInputProps> = ({
   title,

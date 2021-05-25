@@ -1,10 +1,10 @@
 import React from 'react'
 
-import type { ITheme } from '../../types'
-import { useSelector } from '../../hooks'
-import { theme, darkTheme } from '../../theme'
+import type { ITheme } from '@types'
+import { useSelector } from '@hooks'
+import { theme, darkTheme } from '@theme'
 
-const ThemeContext = React.createContext<ITheme>({})
+const ThemeContext = React.createContext<ITheme>(theme)
 
 export const withThemeContext = (Component: React.ComponentType<any>) => (props: any) => {
   const darkMode = useSelector(({ ui: { darkMode } }) => darkMode)

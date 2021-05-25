@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, SafeAreaView, Text, Pressable } from 'react-native'
 
-import Routes from '../../routes'
+import Routes from '@routes'
 
 const Tab1 = ({ navigation }: any) => {
   return (

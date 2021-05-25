@@ -7,9 +7,9 @@ import type { ILoginScreenProps, ILoginForm } from '@types'
 import { useDispatch, useTheme, useStyleSheet } from '@hooks'
 import { loginUser } from '@services/user'
 import { loginValidationSchema } from '@utils/validators'
+import Routes from '@routes'
 import Layout from '@components/Layout'
 import StyledFormInput from '@components/StyledFormInput'
-import Routes from '@routes'
 import styles from './styles'
 
 const Login: React.FC<ILoginScreenProps> = ({ navigation }) => {

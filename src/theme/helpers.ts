@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions, Platform, StatusBar } from 'react-native'
 
-import { adjustToWidth } from '../utils/styleHelpers'
-import { defaultDimensions } from '../utils/constants'
+import { adjustToWidth } from '@utils/styleHelpers'
+import { defaultDimensions } from '@utils/constants'
 import colors from './colors'
 
 const { height, width } = Dimensions.get('window')

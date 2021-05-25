@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { IUiSlice } from '../../types'
+import type { IUiSlice } from '@types'
 
 const initialState: IUiSlice = {
   isLoading: false,
