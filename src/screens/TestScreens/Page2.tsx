@@ -1,8 +1,8 @@
 import React from 'react'
 import { SafeAreaView, Text, Pressable } from 'react-native'
 
-import type { IPage2ScreenProps } from '../../types'
-import Routes from '../../routes'
+import type { IPage2ScreenProps } from '@types'
+import Routes from '@routes'
 import cs from './styles'
 
 const Page2: React.FC<IPage2ScreenProps> = ({ navigation }) => {

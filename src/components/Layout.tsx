@@ -3,9 +3,9 @@ import { ImageBackground, KeyboardAvoidingView, Platform } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import type { KeyboardAvoidingViewProps as IKeyboardAvoidingViewProps } from 'react-native'
 
-import { ILayoutProps, IConditionalWrapperProps } from '../types'
-import { useTheme } from '../hooks'
-import { adjustToWidth } from '../utils/styleHelpers'
+import { ILayoutProps, IConditionalWrapperProps } from '@types'
+import { useTheme } from '@hooks'
+import { adjustToWidth } from '@utils/styleHelpers'
 
 const keyboardDefaultBehavior = Platform.OS === 'ios' ? 'padding' : 'height'
 const keyboardPositionBehavior = Platform.OS === 'ios' ? 'position' : undefined

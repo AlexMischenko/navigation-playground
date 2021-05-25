@@ -1,7 +1,7 @@
 import { Linking, Platform } from 'react-native'
 import { InitialState } from '@react-navigation/native'
 
-import type { IAutoloadResult } from '../types'
+import type { IAutoloadResult } from '@types'
 import { NAVIGATION_STATE_KEY, AUTH_TOKEN_KEY, API_URL_KEY, DEFAULT_ENV } from './constants'
 import { updateToken } from './request'
 import { getItem } from './storage'

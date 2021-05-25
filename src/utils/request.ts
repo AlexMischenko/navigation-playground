@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
-import type { IRequestProps } from '../types'
+import type { IRequestProps } from '@types'
 import { requestLog } from './debug'
 import { getUrl } from './url'
 

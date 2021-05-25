@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
-import type { ITheme } from '../../types'
-import { adjustToWidth } from '../../utils/styleHelpers'
+import type { ITheme } from '@types'
+import { adjustToWidth } from '@utils/styleHelpers'
 
 export default (theme: ITheme): any =>
   StyleSheet.create({

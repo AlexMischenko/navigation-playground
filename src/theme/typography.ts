@@ -1,6 +1,6 @@
 import { StyleSheet, StyleProp, TextStyle } from 'react-native'
 
-import { adjustFont, adjustToWidthPrecisely } from '../utils/styleHelpers'
+import { adjustFont, adjustToWidthPrecisely } from '@utils/styleHelpers'
 import colors from './colors'
 
 const baseText: StyleProp<TextStyle> = {

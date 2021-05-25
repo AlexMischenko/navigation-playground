@@ -1,6 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack'
 
-import Routes from '../routes'
+import Routes from '@routes'
 
 export type IMainStackParamList = {
   Login: undefined,

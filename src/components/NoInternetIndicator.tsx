@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
-import type { ITheme } from '../types'
-import { useTheme, useStyleSheet } from '../hooks'
-import { adjustToWidth, adjustFont } from '../utils/styleHelpers'
+import type { ITheme } from '@types'
+import { useTheme, useStyleSheet } from '@hooks'
+import { adjustToWidth, adjustFont } from '@utils/styleHelpers'
 
 const NoInternetIndicator: React.FC<Record<string, never>> = () => {
   const theme = useTheme()

@@ -3,8 +3,8 @@ import { Controller } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { View, Text } from 'react-native'
 
-import type { IStyledFormInputProps } from '../types'
-import { useTheme } from '../hooks'
+import type { IStyledFormInputProps } from '@types'
+import { useTheme } from '@hooks'
 import StyledInput from './StyledInput'
 
 const StyledFormInput: React.FC<IStyledFormInputProps> = ({
