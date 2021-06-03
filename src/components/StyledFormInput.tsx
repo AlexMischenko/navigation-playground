@@ -30,6 +30,7 @@ const StyledFormInput: React.FC<IStyledFormInputProps> = ({
             value={value}
             autoCapitalize="none"
             error={errors[name]}
+            accessibilityLabel={`${name} input`}
           />
           <ErrorMessage
             errors={errors}

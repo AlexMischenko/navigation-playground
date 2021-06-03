@@ -8,7 +8,7 @@ import SplashScreen from './src/screens/SplashScreen'
 import LoadingContainer from './src/LoadingContainer'
 import autoload from './src/utils/autoload'
 
-const App: React.FC = () => {
+const App: React.FC<Record<string, never>> = () => {
   const [isReady, setIsReady] = useState(false)
   const [initialNavigationState, setInitialNavigationState] = useState<InitialState>()
 
