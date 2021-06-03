@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing @components/StyledInput \`StyledInput\` displays error state when "error" prop enabled 1`] = `
+<View>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#2B2D42",
+          "fontSize": 28.985507246376812,
+          "letterSpacing": -0.5797101449275363,
+          "lineHeight": 38.04347826086956,
+          "textTransform": "capitalize",
+        },
+        Object {
+          "marginBottom": 14.5,
+        },
+        undefined,
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 25.5,
+          "elevation": 3,
+          "flexDirection": "row",
+          "height": 116,
+          "justifyContent": "space-between",
+          "paddingLeft": 31,
+          "paddingRight": 30,
+          "shadowColor": "#8D99AE",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0.15,
+          "shadowRadius": 18,
+          "width": "100%",
+        },
+        Object {
+          "borderColor": "red",
+          "borderWidth": 0.5,
+        },
+      ]
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+  </View>
+</View>
+`;

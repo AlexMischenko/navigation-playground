@@ -45,7 +45,7 @@ const SignUp: React.FC<ISignUpScreenProps> = ({ navigation }) => {
       >
         <View style={theme.helpers.flex1} />
         <View style={theme.helpers.flex1JustifyContentCenter}>
-          <Text style={[cs.titleBlock, theme.textStyles.title1]}>Sign Up</Text>
+          <Text style={[cs.titleBlock, theme.textStyles.title1]}>Register</Text>
           <View style={theme.helpers.ph20}>
             <StyledFormInput
               style={theme.helpers.mb16}
