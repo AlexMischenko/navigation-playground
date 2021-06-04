@@ -21,3 +21,5 @@ export const clearAll = async (): Promise<void> => {
   )
   await AsyncStorage.multiRemove(filteredKeys)
 }
+
+export const engine = AsyncStorage
