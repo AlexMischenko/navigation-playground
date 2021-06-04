@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 import type { InitialState } from '@react-navigation/native'
 
-import store from './src/redux/store'
+import { store, persistor } from './src/redux/store'
 import RootNavigator from './src/navigator'
 import SplashScreen from './src/screens/SplashScreen'
 import LoadingContainer from './src/LoadingContainer'
@@ -30,9 +31,11 @@ const App: React.FC<Record<string, never>> = () => {
 
   return (
     <Provider store={store}>
-      <LoadingContainer>
-        <RootNavigator initialState={initialNavigationState} />
-      </LoadingContainer>
+      <PersistGate loading={null} persistor={persistor}>
+        <LoadingContainer>
+          <RootNavigator initialState={initialNavigationState} />
+        </LoadingContainer>
+      </PersistGate>
     </Provider>
   )
 }
